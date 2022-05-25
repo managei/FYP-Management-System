@@ -3,6 +3,9 @@ This project tries to develop a web-based system that facilitates final year pro
 DB Project
 Final Year Management System:
 
+## Figma
+link
+
 ## objective: 
 deisgn a comprehensive web-systems for facilitate multiple types of users
 
