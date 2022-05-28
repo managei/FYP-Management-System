@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FYPinterface.aspx.cs" Inherits="FYP_Management_System_DB_Final_Project.Welcome" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentInterface.aspx.cs" Inherits="FYP_Management_System_DB_Final_Project.StudentInterface" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Login</title>
     <style>
         :root {
             --primary: #6C55F9;
@@ -127,17 +127,18 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
-                            <asp:LinkButton ID="LinkButton1" runat="server">Home</asp:LinkButton>
+                            <asp:LinkButton ID="HomeButton" runat="server" OnClick="LinkButton1_Click">Home</asp:LinkButton>
                             &nbsp;</li>
-                        <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton2" runat="server">Profile</asp:LinkButton>
+                        <li class="nav-item">
+                            <asp:LinkButton ID="ProfileButton" runat="server" OnClick="ProfileButton_Click">Profile</asp:LinkButton>
                         </li>
-                        <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
+                        <li class="nav-item">
+                            <asp:LinkButton ID="LogOutButton" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-
         <div class="main-body" style="background: #F6F5FC; margin-top: 10px; margin-bottom: 10px; padding: 10px; overflow: auto;">
             <h1>Home</h1>
             <div>
@@ -150,68 +151,18 @@
                 </div>
                 <div style="margin: auto; float: right; width: 74%;">
                     <div style="border-style: double; border-width: 1px; padding: 10px;">
-                        <h1>FYP Committe
+                        <h1>Student Portal
                         </h1>
-
-                        </p>
-                        <button type="button" class="collapsible">Manage Users</button>
+                        <p>You have acces to following operations:</p>
+                        <button type="button" class="collapsible">Manage FYP</button>
                         <div class="content">
                             <p>Lorem ipsum...</p>
-                            <asp:Button ID="Button1" runat="server" Text="Load All Users" OnClick="LoadUsers_Click" />
-                            <asp:Button ID="loadFaculty" runat="server" Text="Load All Faculty" OnClick="LoadFaculty_Click" />
-                            <asp:Button ID="LoadStudents" runat="server" Text="Load All Students" OnClick="LoadStudents_Click" />
-                            <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
-                            <div align="center">
-                                <div style="border: 1px solid #555;">
-                                    <h1>Add User</h1>
-                                </div>
-                                <div style="border: 1px solid #555;">
-                                    <p>
-                                        User Name:
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                                    </p>
-                                    <p>
-                                        Email:
-                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                                    </p>
-                                    <p>
-                                        Password:
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                    </p>
-                                    User Role:
-                                    <asp:DropDownList ID="DropDownList1" runat="server">
-                                        <asp:ListItem Value="FACULTY">Faculty Member</asp:ListItem>
-                                        <asp:ListItem Value="STUDENT">Student</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <br />
-                                    <asp:Button ID="Button3" runat="server" Text="Submit" />
-                                    </p>
-                                </div>
-                            </div>
                         </div>
-                        <div>
-                            <br />
-                        </div>
-                        <button type="button" class="collapsible">Manage FYP's</button>
-                        <div class="content">
-                            <p>Lorem ipsum...</p>
-                            <asp:PlaceHolder runat="server" ID="PlaceHolder2"></asp:PlaceHolder>
-                        </div>
-                        <div>
-                            <br />
-                        </div>
-                        <button type="button" class="collapsible">Manage Projects</button>
-                        <div class="content">
-                            <p>Lorem ipsum...</p>
-                            <asp:PlaceHolder runat="server" ID="PlaceHolder3"></asp:PlaceHolder>
-                        </div>
-
-
                     </div>
                 </div>
             </div>
-
         </div>
+
     </form>
 </body>
 <script>
