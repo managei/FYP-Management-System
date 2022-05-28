@@ -37,10 +37,7 @@ namespace FYP_Management_System_DB_Final_Project
             {
                 if (reader.Read())
                 {
-                    //for (int i = 0; i < reader.FieldCount; i++)
-                    //{
                         userName.Text = reader.GetValue(4).ToString();
-                    //}
                 }
             }
         }

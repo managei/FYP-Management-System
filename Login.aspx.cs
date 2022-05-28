@@ -21,7 +21,6 @@ namespace FYP_Management_System_DB_Final_Project
             TextBox1.Text = "";
             TextBox2.Text = "";
         }
-
         protected void submitButton_Click(object sender, EventArgs e)
         {
             //Connection String

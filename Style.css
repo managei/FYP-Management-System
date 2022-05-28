@@ -1,0 +1,128 @@
+﻿:root {
+    --primary: #6C55F9;
+    --accent: #FF3D85;
+    --secondary: #645F88;
+    --success: #35bb78;
+    --info: #05B4E1;
+    --warning: #FAC14D;
+    --danger: #FF4943;
+    --grey: #B4B2C5;
+    --dark: #2D2B3A;
+    --light: #F6F5FC;
+    font-family: monospace;
+    
+}
+
+body {
+    line-height: 1.5;
+    color: #2D2B3A;
+    background: #B4B2C5;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+loginBanner {
+    text-align:center;
+
+}
+a {
+    color: #6C55F9;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+    a:hover {
+        color: #5641df;
+        text-decoration: underline;
+    }
+.button {
+    background-color: #6C55F9;
+    cursor:pointer;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    margin: 5px;
+    text-align: center;
+}
+    .button:hover {
+        background-color: #2D2B3A;
+    }
+.spcBtn:hover {
+    background-color: #FF3D85;
+}
+.nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+    display: inline;
+    float: left;
+    display: block;
+    padding-inline: 8px;
+    width: 62px;
+    border: 1px solid #555;
+}
+
+.activeBtn {
+    font-weight: bold;
+}
+
+
+.navbar-brand {
+    display: inline;
+    float: left;
+    display: block;
+    padding: 8px;
+    width: 134px;
+}
+
+.navbar-nav {
+    display: inline-block;
+    float: right;
+    margin: 0px;
+    margin-top: 8px;
+}
+
+.container {
+    align-content: baseline;
+    display: block;
+    height: 42px;
+    padding: 10px;
+    border: 1px solid #555;
+}
+
+.main-body {
+    border: 1px solid #555;
+}
+
+.collapsible {
+    background-color: #645F88;
+    color: #F6F5FC;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+    .active, .collapsible:hover {
+        background-color: #2D2B3A;
+    }
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+.table {
+    width: 100%;
+}
+.td {
+    border: 1px solid #2D2B3A;
+}
