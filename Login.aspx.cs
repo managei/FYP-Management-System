@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace FYP_Management_System_DB_Final_Project
 {
@@ -24,7 +25,7 @@ namespace FYP_Management_System_DB_Final_Project
         protected void submitButton_Click(object sender, EventArgs e)
         {
             //Connection String
-            SqlConnection conn = new SqlConnection("Data Source=RAZI-PC\\SQLEXPRESS;Initial Catalog=FYP_MANAGEMENT_SYSTEM;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString);
             conn.Open();
             SqlCommand cmL;
             SqlCommand cmS;

@@ -28,7 +28,7 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void LoadUserName()
         {
-            SqlConnection conn = new SqlConnection("Data Source=RAZI-PC\\SQLEXPRESS;Initial Catalog=FYP_MANAGEMENT_SYSTEM;Integrated Security=True"); //Connection String
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
             SqlCommand cmL;
             SqlCommand cmS;
@@ -54,7 +54,7 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void loadTable(string query)
         {
-            using (SqlConnection con = new SqlConnection("Data Source=RAZI-PC\\SQLEXPRESS;Initial Catalog=FYP_MANAGEMENT_SYSTEM;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
