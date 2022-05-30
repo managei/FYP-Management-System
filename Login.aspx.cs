@@ -30,12 +30,10 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmS;
             string email = TextBox1.Text;
             string pass = TextBox2.Text;
+            string role;
 
             string queryLogin;
-            if (DropDownList1.Text == "FACULTY")
-                queryLogin = "select * from FACULTY where email='" + email + "' and password='" + pass + "'";
-            else
-                queryLogin = "select * from Student where email='" + email + "' and password='" + pass + "'";
+            queryLogin = "select role from USERS where email='" + email + "' and password='" + pass + "'";
 
             cmL = new SqlCommand(queryLogin, conn);
             SqlDataReader reader = cmL.ExecuteReader();
@@ -45,16 +43,17 @@ namespace FYP_Management_System_DB_Final_Project
                 {
                     //user exists
                     //goto Rent Car Page
+                    role = reader.GetValue(0).ToString();
                     cmL.Dispose();
                     conn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Logged In.');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Logged In.'); ", true);
                     Session["Email"] = email;
-                    Session["Role"] = DropDownList1.Text;
-                    if (DropDownList1.Text == "FACULTY")
+                    Session["Role"] = role;
+                    if (role == "FACULTY")
                     {
                         Response.Redirect("FYPinterface.aspx");
                     }
-                    else
+                    else if (role == "STUDENT") 
                     {
                         Response.Redirect("StudentInterface.aspx");
 

@@ -15,7 +15,7 @@ namespace FYP_Management_System_DB_Final_Project
         {
             if (!IsPostBack)
             {
-                if (Session["Email"] == null || Session["Role"]!="STUDENT")
+                if (Session["Email"] == null || Session["Role"].ToString()!= "STUDENT")
                 {
                     Response.Redirect("Login.aspx");
                 }

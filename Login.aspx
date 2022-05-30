@@ -16,14 +16,14 @@
             <div align="center" style="margin: auto; width: 90%">
                 <p>------------------------------</p>
                 <p>Insert Required Data :</p>
-                <p>
+                <%--<p>
                     Select User:
                     <asp:DropDownList ID="DropDownList1" runat="server">
                         <asp:ListItem Value="FACULTY">Faculty Member</asp:ListItem>
                         <asp:ListItem Value="STUDENT">Student</asp:ListItem>
                     </asp:DropDownList>
 
-                </p>
+                </p>--%>
                 <p>
                     Email:
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>

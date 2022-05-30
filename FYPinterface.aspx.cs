@@ -13,7 +13,7 @@ namespace FYP_Management_System_DB_Final_Project
         {
             if (!IsPostBack)
             {
-                if (Session["Email"] == null || Session["Role"] != "FACULTY")
+                if (Session["Email"] == null || Session["Role"].ToString() != "FACULTY")
                 {
                     Response.Redirect("Login.aspx");
                 }
@@ -148,7 +148,7 @@ namespace FYP_Management_System_DB_Final_Project
                     reader.Close();
                     //user does not
                     //Create new User
-                    string querySign = "INSERT INTO USERS (email,password,role) VALUES ('" + email + "','" + pass + "','Student')";
+                    string querySign = "INSERT INTO USERS (email,password,role) VALUES ('" + email + "','" + pass + "','STUDENT')";
                     cmS = new SqlCommand(querySign, conn);
                     cmS.ExecuteNonQuery();
                     cmS.Dispose();
