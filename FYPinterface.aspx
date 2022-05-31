@@ -53,7 +53,6 @@
                             <asp:Button CssClass="button" ID="Button2" runat="server" Text="Load All Students" OnClick="LoadStudents_Click" />
                             <asp:Button CssClass="button spcBtn" ID="HideTable" runat="server" Text="Hide Table" OnClick="hideTbl_Click" />
                             <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
-
                             <div align="center">
                                 <button type="button" class="collapsible">
                                     Add Student

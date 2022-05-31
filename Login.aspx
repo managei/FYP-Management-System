@@ -25,7 +25,7 @@
 
                 </p>--%>
                 <p>
-                    Email:
+                    Email:&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 </p>
                 <p>
