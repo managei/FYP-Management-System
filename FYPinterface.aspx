@@ -34,8 +34,10 @@
             <div>
                 <div style="margin: auto; float: left; width: 25%;">
                     <div style="border-style: double; border-width: 1px; padding: 10px;">
+                        <h1>UserName:</h1>
                         <asp:Label ID="userName" runat="server" Font-Bold="False" Font-Size="X-Large" ForeColor="Black" Text="username"></asp:Label>
                         <br />
+                        <h1>Role:</h1>
                         <asp:Label ID="role" runat="server" Text="role"></asp:Label>
                     </div>
                 </div>
@@ -64,7 +66,7 @@
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            Email:
+                                            Email:&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
@@ -90,7 +92,7 @@
                     <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            Email:
+                                            Email:&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
@@ -121,10 +123,47 @@
                         <div>
                             <br />
                         </div>
-                        <button type="button" class="collapsible">Manage Projects</button>
+                        <button type="button" class="collapsible">Manage Groups</button>
                         <div class="content">
-                            <p>Lorem ipsum...</p>
+                            <p>Here you can view and manage all Groups</p>
+                            <asp:Button CssClass="button" ID="loadGroupsButton" runat="server" Text="Load All Groups" OnClick="LoadGroups_Click" />
+                            <asp:Button CssClass="button" ID="loadFYPgroup" runat="server" Text="Load Group FYP" OnClick="LoadGroupFYP_Click" />
+                            <asp:Button CssClass="button" ID="loadGroupMembers" runat="server" Text="Load Group Members" OnClick="LoadGroupMembers_Click" />
+                            <asp:Button CssClass="button" ID="loadGroupSupervisors" runat="server" Text="Load Group Supervisors" OnClick="LoadGroupSuper_Click" />
+                            <asp:Button CssClass="button" ID="loadGroupPanel" runat="server" Text="Load Group Panel" OnClick="LoadGroupPanel_Click" />
+                            <asp:Button CssClass="button spcBtn" ID="Button4" runat="server" Text="Hide Table" OnClick="hideTbl3_Click" />
+
                             <asp:PlaceHolder runat="server" ID="PlaceHolder3"></asp:PlaceHolder>
+                             <div align="center">
+                                <button type="button" class="collapsible">
+                                    Add Group
+                                </button>
+                                <div class="content">
+
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            User Name:
+                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            Email:&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            Password:
+                    <asp:TextBox ID="TextBox9" runat="server" TextMode="Password"></asp:TextBox>
+                                        </p>
+                                        Faculty Role
+                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                            <asp:ListItem>FYP Committee</asp:ListItem>
+                                            <asp:ListItem>Supervisor</asp:ListItem>
+                                            <asp:ListItem>Panel Member</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <p>
+                                            <asp:Button ID="Button5" runat="server" Text="Submit" OnClick="addUserBtn" />
+                                        </p>
+                                    </div>
+                                </div>
                         </div>
 
 
