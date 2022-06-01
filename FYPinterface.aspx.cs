@@ -303,6 +303,9 @@ namespace FYP_Management_System_DB_Final_Project
                         case 5:
                             PlaceHolder5.Controls.Add(new Literal { Text = html.ToString() });
                             break;
+                        case 6:
+                            PlaceHolderSuprv.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
                         default:
                             break;
                     }
@@ -355,6 +358,11 @@ namespace FYP_Management_System_DB_Final_Project
         protected void Button10_Click(object sender, EventArgs e)
         {
             loadTable("select panel_id as Id,panel_name as Panel_Name from PANEL", 5);
+        }
+
+        protected void loadSupervisor_Click(object sender, EventArgs e)
+        {
+            loadTable("select faculty_id as FacultyId from SUPERVISOR", 6);
         }
         protected void addUserBtn(object sender, EventArgs e)
         {
@@ -482,8 +490,8 @@ namespace FYP_Management_System_DB_Final_Project
             conn.Open();
             SqlCommand cmL;
             SqlCommand cmS;
-            string F_id = (TB_addMemComm1.Text);
-            string FC_id = (TB_addMemComm2.Text);
+            int F_id = int.Parse(TB_addMemComm2.Text);
+            int FC_id = int.Parse(TB_addMemComm1.Text);
 
             string queryLogin = "update FACULTY set committee_id=" + FC_id + " where id=" + F_id;
             cmL = new SqlCommand(queryLogin, conn);
@@ -604,6 +612,22 @@ namespace FYP_Management_System_DB_Final_Project
                 }
 
             }
+        }
+
+        //Add supervisor
+        protected void BTNsubmitSuprv_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            int F_id = int.Parse(TB_setSuprv.Text);
+
+            string queryLogin = "insert SUPERVISOR (faculty_id) values('"+F_id+"')";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            cmL.Dispose();
+            reader.Close();
+            conn.Close();
         }
         protected void hideTbl_Click(object sender, EventArgs e)
         {

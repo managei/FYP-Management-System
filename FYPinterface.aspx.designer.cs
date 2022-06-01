@@ -339,6 +339,51 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.Button Button13;
 
         /// <summary>
+        /// loadSupervisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button loadSupervisor;
+
+        /// <summary>
+        /// hideSupTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button hideSupTable;
+
+        /// <summary>
+        /// PlaceHolderSuprv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderSuprv;
+
+        /// <summary>
+        /// TB_setSuprv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_setSuprv;
+
+        /// <summary>
+        /// BTNsubmitSuprv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNsubmitSuprv;
+
+        /// <summary>
         /// Button7 control.
         /// </summary>
         /// <remarks>

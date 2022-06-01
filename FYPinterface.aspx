@@ -153,7 +153,6 @@
                             </div>
                         </div>
                         <p></p>
-                        <p></p>
                         <button type="button" class="collapsible">
                             Manage Panels              
                         </button>
@@ -197,7 +196,31 @@
                             </div>
                         </div>
                         <p></p>
-
+                        <p></p>
+                        <button type="button" class="collapsible">
+                            Manage Supervisors          
+                        </button>
+                        <div class="content">
+                            <p>Lorem ipsum...</p>
+                            <asp:Button CssClass="button" ID="loadSupervisor" runat="server" Text="Load all Supervisors" OnClick="loadSupervisor_Click" />
+                            <asp:Button CssClass="button spcBtn" ID="hideSupTable" runat="server" Text="Hide Table" />
+                            <asp:PlaceHolder runat="server" ID="PlaceHolderSuprv"></asp:PlaceHolder>
+                            <div align="center">
+                                <p></p>
+                                <button type="button" class="collapsible">
+                                    Add a Member to Supervise</button>
+                                <div class="content">
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            Select Member: 
+                                            <asp:TextBox ID="TB_setSuprv" runat="server"></asp:TextBox>
+                                        </p>
+                                        <asp:Button CssClass="button sucBtn" ID="BTNsubmitSuprv" runat="server" Text="Submit" OnClick="BTNsubmitSuprv_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
                         <button type="button" class="collapsible">
                             Manage FYP's</button>
                         <div class="content">
@@ -276,29 +299,29 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                            <br />
-                                  <div align="center">
-                                <button type="button" class="collapsible">
-                                    Add Student to Group
-                                </button>
-                                <div class="content">
+                                <p />
+                                <div align="center">
+                                    <button type="button" class="collapsible">
+                                        Add Student to Group
+                                    </button>
+                                    <div class="content">
 
-                                    <div style="border: 1px solid #555;">
-                                        <p>
-                                            Student ID:
+                                        <div style="border: 1px solid #555;">
+                                            <p>
+                                                Student ID:
                     <asp:TextBox ID="getStudentID" runat="server"></asp:TextBox>
-                                        </p>
-                                        <p>
-                                            Group ID:&nbsp;
+                                            </p>
+                                            <p>
+                                                Group ID:&nbsp;
                     <asp:TextBox ID="getGroupID" runat="server"></asp:TextBox>
-                                        </p>
-                                        <p>
-                                            <asp:Button ID="addStudentToGroupButton" runat="server" Text="Submit" OnClick="addStudentToGroup" />
-                                        </p>
+                                            </p>
+                                            <p>
+                                                <asp:Button ID="addStudentToGroupButton" runat="server" Text="Submit" OnClick="addStudentToGroup" />
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
