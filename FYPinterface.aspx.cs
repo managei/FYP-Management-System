@@ -18,6 +18,7 @@ namespace FYP_Management_System_DB_Final_Project
                     Response.Redirect("Login.aspx");
                 }
                 LoadUserName();
+                LoadCommitteeID();
                 role.Text = "COMMITTEE";
             }
         }
@@ -26,7 +27,7 @@ namespace FYP_Management_System_DB_Final_Project
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
             SqlCommand cmL;
-            SqlCommand cmS;
+            //SqlCommand cmS;
 
             string queryLogin = "SELECT * FROM FACULTY WHERE email='" + Session["Email"].ToString() + "'";
             cmL = new SqlCommand(queryLogin, conn);
@@ -43,11 +44,120 @@ namespace FYP_Management_System_DB_Final_Project
             }
         }
 
+        protected void LoadCommitteeID()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            string q = "select f.committee_id from FACULTY f where email='" + Session["Email"] + "'";
+            SqlCommand cmL = new SqlCommand(q, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    //for (int i = 0; i < reader.FieldCount; i++)
+                    //{
+                    Session["CommitteeID"] = reader.GetValue(0).ToString();
+
+                    //}
+                }
+            }
+            conn.Close();
+        }
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
 
+        protected void createReport_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+
+            string details = reportDetails.Text;
+            int reportID = int.Parse(Session["ReportCount"].ToString())-1;
+            if (reportID < 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in insertion');", true);
+                return;
+            }
+            string q1 = "INSERT INTO REPORTS (comittee_id,report_id,detail) VALUES (" + Session["CommitteeID"] + "," + reportID + ",'" + details +"')";
+
+            cmL = new SqlCommand(q1, conn);
+            
+            if (details == "")
+            {
+                conn.Close();
+                return;
+            }
+
+            int affected = cmL.ExecuteNonQuery();
+            if (affected > 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Report Added');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in insertion');", true);
+            }
+            conn.Close();
+        }
+        protected void LoadReports_Click(object sender, EventArgs e)
+        {
+            if (loadAllReports.Checked==false)
+            {
+                loadTable("select* from reports", 4);
+            }
+            else
+            {
+                string q = "select r.* from reports r inner join FACULTY f on f.committee_id=r.comittee_id where f.email='" + Session["Email"] + "'";
+                loadTable(q, 4);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+                conn.Open();
+                SqlCommand cmL;
+                string q2 = "select count(r.report_id) from reports r inner join FACULTY f on f.committee_id=r.comittee_id where f.email='" + Session["Email"] + "'";
+                cmL = new SqlCommand(q, conn);
+                SqlDataReader reader = cmL.ExecuteReader();
+                if (reader != null)
+                {
+                    if (reader.Read())
+                    {
+                        //for (int i = 0; i < reader.FieldCount; i++)
+                        //{
+                        Session["ReportCount"] = reader.GetValue(0).ToString();
+                        
+                        //}
+                    }
+                }
+            }
+        }
+
+        protected void updateReport_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            string rID = getReportIDToEdit.Text;
+            string details = getNewDetails.Text;
+            string q= "update REPORTS set detail = '"+ details +"' where report_id = '"+rID+"' and comittee_id = '"+Session["CommitteeID"] + "'";
+            cmL = new SqlCommand(q, conn);
+            if(rID=="" || details == "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Incorrect Data');", true);
+                return;
+            }
+            if (cmL.ExecuteNonQuery() > 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Updated');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Update Error');", true);
+
+            }
+            conn.Close();
+        }
         protected void addStudentToGroup(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
@@ -275,10 +385,13 @@ namespace FYP_Management_System_DB_Final_Project
                         case 3:
                             PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
                             break;
-                            default:
+                        case 4:
+                            PlaceHolder4.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
+                        default:
                             break;
                     }
-                    PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
+                   // PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
                     con.Close();
                 }
             }
