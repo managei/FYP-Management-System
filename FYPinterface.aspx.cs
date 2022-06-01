@@ -69,6 +69,109 @@ namespace FYP_Management_System_DB_Final_Project
             Session["Email"] = null;
             Response.Redirect("Login.aspx");
         }
+
+        protected void addStudentToGroup(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL, cmL2, cmL3;
+            string studentID = getStudentID.Text;
+            string groupID = getGroupID.Text;
+
+            if (studentID == "" || groupID == "")
+            {
+                conn.Close();
+                return;
+            }
+
+            string q1 = "select student_id from STUDENT where student_id=" + studentID;
+            string q2 = "select group_id from PROJECT_GROUP where group_id=" + groupID;
+            string queryLogin = "update STUDENT set group_id =" + groupID + "where student_id =" + studentID;
+
+            cmL = new SqlCommand(queryLogin, conn);
+            cmL2 = new SqlCommand(q1, conn);
+            cmL3 = new SqlCommand(q2, conn);
+
+            if (cmL2.ExecuteScalar() == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Student ID');", true);
+                conn.Close();
+                return;
+            }
+            else if (cmL3.ExecuteScalar() == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Group ID');", true);
+                conn.Close();
+                return;
+            }
+
+            int affected = cmL.ExecuteNonQuery();
+            if (affected > 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Student Added');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in update');", true);
+            }
+            conn.Close();
+
+        }
+
+        protected void createGroup(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL, cmL2, cmL3, cmL4;
+            string Gname = GroupNameBox.Text;
+            string G_PID = GroupPanelIDBox.Text;
+            string G_SID = GroupSuperID.Text;
+            string G_CID = GroupCommitteeID.Text;
+
+            string q1 = "select panel_id from panel where panel_id=" + G_PID;
+            string q2 = "select committee_id from FYP_COMMITTEE where committee_id=" + G_CID;
+            string q3 = "select faculty_id from supervisor where faculty_id=" + G_SID;
+
+            cmL2 = new SqlCommand(q1, conn);
+            cmL3= new SqlCommand(q2, conn);
+            cmL4= new SqlCommand(q3, conn);
+
+            if (G_PID == "" || G_SID == "" || G_CID == "")
+            {
+                conn.Close();
+                return;
+            }
+
+            if (cmL2.ExecuteScalar() == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Panel ID');", true);
+                conn.Close();
+                return;
+            }else if (cmL3.ExecuteScalar() == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Committee ID');", true);
+                conn.Close();
+                return;
+            }else if (cmL4.ExecuteScalar() == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Supervisor ID');", true);
+                conn.Close();
+                return;
+            }
+
+            string queryLogin = "INSERT INTO PROJECT_GROUP(group_name,panel_id, supervisor_id, committee_id) values ('" + GroupNameBox.Text.ToString() + "'," + GroupPanelIDBox.Text.ToString() + "," + GroupSuperID.Text.ToString() + "," + GroupCommitteeID.Text.ToString() + ");";
+            cmL = new SqlCommand(queryLogin, conn);
+            int affected = cmL.ExecuteNonQuery();
+            if (affected >0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Group Added');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in insertion');", true);
+            }
+            conn.Close();
+        }
         protected void loadTable(string query)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
