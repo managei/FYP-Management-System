@@ -87,6 +87,15 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.Button LoadFYP;
 
         /// <summary>
+        /// LoadGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LoadGroup;
+
+        /// <summary>
         /// HideTable1 control.
         /// </summary>
         /// <remarks>
@@ -103,5 +112,32 @@ namespace FYP_Management_System_DB_Final_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderGroup;
+
+        /// <summary>
+        /// TB_slcFYP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_slcFYP;
+
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+        /// <summary>
+        /// sbmtSlcFYP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sbmtSlcFYP;
     }
 }

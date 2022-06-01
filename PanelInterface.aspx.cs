@@ -146,7 +146,17 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void LoadGroup_Click(object sender, EventArgs e)
         {
-            loadTable("select", 1);
+            loadTable("select g.group_id,g.group_name,p.* from PROJECT_GROUP g inner join PANEL p on g.panel_id=p.panel_id order by g.group_id", 1);
+        }
+
+        protected void LoadFYP_Click(object sender, EventArgs e)
+        {
+            loadTable("SELECT f.* FROM FYP f LEFT JOIN PROJECT_GROUP pg ON pg.fyp_id= f.fyp_Id WHERE pg.fyp_id IS NULL", 1);
+        }
+        // add fyp to group
+        protected void sbmtSlcFYP_Click(object sender, EventArgs e)
+        {
+
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

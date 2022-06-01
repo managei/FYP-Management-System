@@ -52,11 +52,27 @@
                         <button type="button" class="collapsible">Manage Groups</button>
                         <div class="content">
                             <p>Lorem ipsum...</p>
-                        </div>
-                        <asp:Button CssClass="button" ID="LoadFYP" runat="server" Text="Load Ongoing Groups" OnClick="LoadGroup_Click" />
-                        <asp:Button CssClass="button spcBtn" ID="HideTable1" runat="server" Text="Hide Table" />
-                        <asp:PlaceHolder ID="PlaceHolderGroup" runat="server"></asp:PlaceHolder>
+                            <div align="center">
+                                <asp:Button CssClass="button" ID="LoadFYP" runat="server" Text="Load Unassigned FYP's" OnClick="LoadFYP_Click" />
+                                <asp:Button CssClass="button" ID="LoadGroup" runat="server" Text="Load Ongoing Groups" OnClick="LoadGroup_Click"  />
+                                <asp:Button CssClass="button spcBtn" ID="HideTable1" runat="server" Text="Hide Table" />
+                                <asp:PlaceHolder ID="PlaceHolderGroup" runat="server"></asp:PlaceHolder>
+                                <p></p>
+                                <button type="button" class="collapsible">Add FYP to Group</button>
+                                <div class="content">
+                                    <p>Select FYP: 
+                                        <asp:TextBox ID="TB_slcFYP" runat="server"></asp:TextBox>
+                                    </p>
+                                    <p>Select Group: 
+                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                    </p>
+                                    <p>
+                                        <asp:Button CssClass="button sucBtn" ID="sbmtSlcFYP" runat="server" Text="Submit" OnClick="sbmtSlcFYP_Click" />
+                                    </p>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

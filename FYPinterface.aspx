@@ -323,22 +323,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                        <div>
-                            <br />
-                        </div>
-                             <button type="button" class="collapsible">Manage Reports</button>
+                        <p></p>
+                        <button type="button" class="collapsible">Manage Reports</button>
                         <div class="content">
                             <p>Here you can view and manage all Reports</p>
                             <asp:Button CssClass="button" ID="loadReports" runat="server" Text="Load All Reports" OnClick="LoadReports_Click" />
-                            
-                            <asp:Button CssClass="button spcBtn" ID="Button10" runat="server" Text="Hide Table" OnClick="hideTbl3_Click" />
+
+                            <asp:Button CssClass="button spcBtn" ID="reportHideBTN" runat="server" Text="Hide Table" OnClick="hideTbl3_Click" />
                             <br />
-                            <asp:CheckBox ID="loadAllReports" runat="server" Text="Load Only Current Committee Reports"/>
+                            <asp:CheckBox ID="loadAllReports" runat="server" Text="Load Only Current Committee Reports" />
                             <br />
                             <asp:PlaceHolder runat="server" ID="PlaceHolder4"></asp:PlaceHolder>
                             <br />
-                             <div align="center">
+                            <div align="center">
                                 <button type="button" class="collapsible">
                                     Add Report (load first)
                                 </button>
@@ -354,28 +351,28 @@
                                         </p>
                                     </div>
                                 </div>
-                        </div>
-                            <br />
-                                  <div align="center">
-                                <button type="button" class="collapsible">
-                                    Edit Report
-                                </button>
-                                <div class="content">
-
-                                    <div style="border: 1px solid #555;">
-                                        <p>
-                                            Report ID:
+                                <br />
+                                <div align="center">
+                                    <button type="button" class="collapsible">
+                                        Edit Report
+                                    </button>
+                                    <div class="content">
+                                        <div style="border: 1px solid #555;">
+                                            <p>
+                                                Report ID:
                     <asp:TextBox ID="getReportIDToEdit" runat="server"></asp:TextBox>
-                                        </p>
-                                        <p>
-                                            Details:&nbsp;
+                                            </p>
+                                            <p>
+                                                Details:&nbsp;
                     <asp:TextBox ID="getNewDetails" runat="server"></asp:TextBox>
-                                        </p>
-                                        <p>
-                                            <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
-                                        </p>
+                                            </p>
+                                            <p>
+                                                <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

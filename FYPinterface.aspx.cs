@@ -395,9 +395,10 @@ namespace FYP_Management_System_DB_Final_Project
                             break;
                         case 6:
                             PlaceHolderSuprv.Controls.Add(new Literal { Text = html.ToString() });
-                            break;
+                            break ;
                         case 7:
                             PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
                         default:
                             break;
                     }

@@ -582,13 +582,13 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.Button loadReports;
 
         /// <summary>
-        /// Button10 control.
+        /// reportHideBTN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button10;
+        protected global::System.Web.UI.WebControls.Button reportHideBTN;
 
         /// <summary>
         /// loadAllReports control.
