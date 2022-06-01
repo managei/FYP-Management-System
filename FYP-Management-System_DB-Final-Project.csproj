@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EvaluationForm.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="StudentInterface.aspx" />
     <Content Include="Style.css" />
@@ -74,6 +75,13 @@
     <Content Include="FYPinterface.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvaluationForm.aspx.cs">
+      <DependentUpon>EvaluationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EvaluationForm.aspx.designer.cs">
+      <DependentUpon>EvaluationForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
