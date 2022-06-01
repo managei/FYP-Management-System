@@ -142,31 +142,49 @@
 
                                     <div style="border: 1px solid #555;">
                                         <p>
-                                            User Name:
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                                            Group Name:
+                    <asp:TextBox ID="GroupNameBox" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            Email:&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                                            Panel ID:&nbsp;
+                    <asp:TextBox ID="GroupPanelIDBox" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            Password:
-                    <asp:TextBox ID="TextBox9" runat="server" TextMode="Password"></asp:TextBox>
+                                            Supervisor ID:
+                    <asp:TextBox ID="GroupSuperID" runat="server"></asp:TextBox>
                                         </p>
-                                        Faculty Role
-                                        <asp:DropDownList ID="DropDownList2" runat="server">
-                                            <asp:ListItem>FYP Committee</asp:ListItem>
-                                            <asp:ListItem>Supervisor</asp:ListItem>
-                                            <asp:ListItem>Panel Member</asp:ListItem>
-                                        </asp:DropDownList>
                                         <p>
-                                            <asp:Button ID="Button5" runat="server" Text="Submit" OnClick="addUserBtn" />
+                                            Committee ID:
+                    <asp:TextBox ID="GroupCommitteeID" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            <asp:Button ID="createGroupButton" runat="server" Text="Create Group" OnClick="createGroup" />
                                         </p>
                                     </div>
                                 </div>
                         </div>
+                            <br />
+                                  <div align="center">
+                                <button type="button" class="collapsible">
+                                    Add Student to Group
+                                </button>
+                                <div class="content">
 
-
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            Student ID:
+                    <asp:TextBox ID="getStudentID" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            Group ID:&nbsp;
+                    <asp:TextBox ID="getGroupID" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            <asp:Button ID="addStudentToGroupButton" runat="server" Text="Submit" OnClick="addStudentToGroup" />
+                                        </p>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
