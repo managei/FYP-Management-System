@@ -13,7 +13,7 @@ namespace FYP_Management_System_DB_Final_Project
         {
             if (!IsPostBack)
             {
-                if (Session["Email"] == null || Session["Role"].ToString() != "FACULTY")
+                if (Session["Email"] == null || Session["Role"].ToString() != "COMMITTEE")
                 {
                     Response.Redirect("Login.aspx");
                 }

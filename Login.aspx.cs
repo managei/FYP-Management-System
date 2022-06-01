@@ -49,7 +49,7 @@ namespace FYP_Management_System_DB_Final_Project
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Logged In.'); ", true);
                     Session["Email"] = email;
                     Session["Role"] = role;
-                    if (role == "FACULTY")
+                    if (role == "COMMITTEE")
                     {
                         Response.Redirect("FYPinterface.aspx");
                     }
