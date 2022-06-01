@@ -56,9 +56,13 @@ namespace FYP_Management_System_DB_Final_Project
                     {
                         Response.Redirect("StudentInterface.aspx");
                     }
+                    else if (role == "PANEL")
+                    {
+                        Response.Redirect("PanelInterface.aspx");
+                    }
                     else 
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Not assigned to any Role'); ", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Not assigned to any Role current Role : " + role + " ); ", true);
                     }
                 }
             }

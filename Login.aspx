@@ -34,8 +34,8 @@
                 </p>
 
                 <p style="text-align: center">
-                    <asp:Button ID="clearbutton" runat="server" OnClientClick="return false;" OnClick="clearbutton_Click" Text="Clear" />
-                    <asp:Button ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
+                    <asp:Button CssClass="button spcBtn" ID="clearbutton" runat="server" OnClientClick="return false;" OnClick="clearbutton_Click" Text="Clear" />
+                    <asp:Button CssClass="button sucBtn" ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
                 </p>
             </div>
         </div>

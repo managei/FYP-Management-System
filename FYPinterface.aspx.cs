@@ -18,18 +18,19 @@ namespace FYP_Management_System_DB_Final_Project
                     Response.Redirect("Login.aspx");
                 }
                 LoadUserName();
-                LoadCommitteeName();
+                LoadCommittee();
                 role.Text = "COMMITTEE Member";
+                
             }
         }
-        protected void LoadCommitteeName()
+        protected void LoadCommittee()
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
             SqlCommand cmL;
             SqlCommand cmS;
 
-            string queryLogin = "SELECT fc.comittee_name from FACULTY f,FYP_COMMITTEE fc where f.committee_id=fc.committee_id and f.email='" + Session["Email"].ToString() + "'";
+            string queryLogin = "SELECT fc.comittee_name,fc.committee_id from FACULTY f,FYP_COMMITTEE fc where f.committee_id=fc.committee_id and f.email='" + Session["Email"].ToString() + "'";
             cmL = new SqlCommand(queryLogin, conn);
             SqlDataReader reader = cmL.ExecuteReader();
             if (reader != null)
@@ -37,6 +38,7 @@ namespace FYP_Management_System_DB_Final_Project
                 if (reader.Read())
                 {
                     LabelCommName.Text = reader.GetValue(0).ToString();
+                    Session["CommitteeId"]=reader.GetValue(1).ToString();
                 }
             }
         }
@@ -64,6 +66,7 @@ namespace FYP_Management_System_DB_Final_Project
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
+            Session["Email"] = null;
             Response.Redirect("Login.aspx");
         }
         protected void loadTable(string query)
@@ -186,10 +189,16 @@ namespace FYP_Management_System_DB_Final_Project
                             PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         case 2:
-                            PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
+                            PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         case 3:
                             PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
+                        case 4:
+                            PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
+                        case 5:
+                            PlaceHolder5.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         default:
                             break;
@@ -213,7 +222,7 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void loadCommites_Click(object sender, EventArgs e)
         {
-            loadTable("select committee_id as ID,comittee_name as Committee_Name from FYP_COMMITTEE", 2);
+            loadTable("select committee_id as ID,comittee_name as Committee_Name from FYP_COMMITTEE", 4);
         }
         protected void LoadGroups_Click(object sender, EventArgs e)
         {
@@ -235,6 +244,14 @@ namespace FYP_Management_System_DB_Final_Project
         protected void LoadGroupPanel_Click(object sender, EventArgs e)
         {
             loadTable("select g.group_id,g.group_name,p.* from PROJECT_GROUP g inner join PANEL p on g.panel_id=p.panel_id order by g.group_id", 3);
+        }
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            loadTable("select fyp_Id as Id,Title,Deadline,Grade,Comment from FYP", 2);
+        }
+        protected void Button10_Click(object sender, EventArgs e)
+        {
+            loadTable("select panel_id as Id,panel_name as Panel_Name from PANEL", 5);
         }
         protected void addUserBtn(object sender, EventArgs e)
         {
@@ -362,8 +379,8 @@ namespace FYP_Management_System_DB_Final_Project
             conn.Open();
             SqlCommand cmL;
             SqlCommand cmS;
-            int F_id = Int16.Parse(DropDownList1.SelectedItem.Value);
-            int FC_id = Int16.Parse(DropDownList3.SelectedItem.Value);
+            string F_id = (TB_addMemComm1.Text);
+            string FC_id = (TB_addMemComm2.Text);
 
             string queryLogin = "update FACULTY set committee_id=" + FC_id + " where id=" + F_id;
             cmL = new SqlCommand(queryLogin, conn);
@@ -386,10 +403,104 @@ namespace FYP_Management_System_DB_Final_Project
                     cmS.Dispose();
                     conn.Close();
                 }
-                
             }
+        }
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            string Fyp_Name = TextBox4.Text.ToString();
+            DateTime date = Calendar1.SelectedDate;
+            string queryLogin = "select * from FYP where Title='" + Fyp_Name + "'";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    cmL.Dispose();
+                    conn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('FYP allready exist with this name');", true);
+                }
+                else if (Fyp_Name != "")
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "insert INTO FYP (Title,Deadline) VALUES('" + Fyp_Name + "','" + date + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('FYP Added in Database.');", true);
+                }
+            }
+        }
+        protected void Button12_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            string PanelName = TB_addPanelName.Text.ToString();
+            string queryLogin = "select * from PANEL where panel_name='" + PanelName + "'";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    cmL.Dispose();
+                    conn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('FYP allready exist with this name');", true);
+                }
+                else if (PanelName != "")
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "insert INTO PANEL (panel_name) VALUES('" + PanelName + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Panel Added in Database.');", true);
+                }
+            }
+        }
+        // add panel member
+        protected void Button13_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            int F_id = int.Parse(TB_addMemPanel2.Text);
+            int P_id = int.Parse(TB_addMemPanel1.Text);
 
-            
+            string queryLogin = "update FACULTY set panel_id=" + P_id + " where id=" + F_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Update not possible');", true);
+                    cmL.Dispose();
+                    conn.Close();
+                }
+                else
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "update USERS set role='PANEL' from USERS u,Faculty f where u.email=f.email AND f.id=" + F_id;
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Added user: " + F_id + " to panel: " + P_id + "');", true);
+
+                    cmS.Dispose();
+                    conn.Close();
+                }
+
+            }
         }
         protected void hideTbl_Click(object sender, EventArgs e)
         {
@@ -407,7 +518,10 @@ namespace FYP_Management_System_DB_Final_Project
         {
             PlaceHolderCommitee.Controls.Clear();
         }
-
+        protected void Button11_Click(object sender, EventArgs e)
+        {
+            PlaceHolder5.Controls.Clear();
+        }
 
     }
 }

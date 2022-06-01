@@ -49,7 +49,6 @@
                         <asp:Label ID="LabelCommName" runat="server" ForeColor="Black" Text="Committee Name" Font-Size="Medium"></asp:Label>
 
                             </h1>
-
                         </p>
                         <button type="button" class="collapsible">Manage Users</button>
                         <div class="content">
@@ -78,7 +77,7 @@
                     <asp:TextBox ID="TextBox3" runat="server" TextMode="Password"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="AddUserBtn" runat="server" Text="Submit" OnClick="addUserBtn" />
+                                            <asp:Button CssClass="button sucBtn" ID="AddUserBtn" runat="server" Text="Submit" OnClick="addUserBtn" />
                                         </p>
                                     </div>
                                 </div>
@@ -104,7 +103,7 @@
                     <asp:TextBox ID="F_Pass" runat="server" TextMode="Password"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="Button3" runat="server" Text="Submit" OnClick="Button3_Click" />
+                                            <asp:Button CssClass="button sucBtn" ID="Button3" runat="server" Text="Submit" OnClick="addFacultyBtn" />
                                         </p>
                                     </div>
                                 </div>
@@ -130,7 +129,7 @@
                     <asp:TextBox ID="commNameText" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="AddCommitteBTN" runat="server" Text="Submit" OnClick="Button3_Click" />
+                                            <asp:Button CssClass="button sucBtn" ID="AddCommitteBTN" runat="server" Text="Submit" OnClick="Button3_Click" />
                                         </p>
                                     </div>
                                 </div>
@@ -142,27 +141,100 @@
                                     <div style="border: 1px solid #555;">
                                         <p>
                                             Select Committee: 
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="comittee_name" DataValueField="committee_id"></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT [committee_id], [comittee_name] FROM [FYP_COMMITTEE]"></asp:SqlDataSource>
+                    <asp:TextBox ID="TB_addMemComm1" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            Select Member: 
-                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="id"></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT [id], [name] FROM [FACULTY]"></asp:SqlDataSource>
+                                            Select Member:
+                    <asp:TextBox ID="TB_addMemComm2" runat="server"></asp:TextBox>
                                         </p>
-                                        <asp:Button ID="Button6" runat="server" Text="Submit" OnClick="Button6_Click" />
+                                        <asp:Button CssClass="button sucBtn" ID="Button6" runat="server" Text="Submit" OnClick="Button6_Click" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <p></p>
+                        <p></p>
                         <button type="button" class="collapsible">
-                            Manage FYP's                   
+                            Manage Panels              
                         </button>
                         <div class="content">
-
                             <p>Lorem ipsum...</p>
+                            <asp:Button CssClass="button" ID="Button10" runat="server" Text="Load all Panels" OnClick="Button10_Click" />
+                            <asp:Button CssClass="button spcBtn" ID="Button11" runat="server" Text="Hide Table" OnClick="Button11_Click" />
+                            <asp:PlaceHolder runat="server" ID="PlaceHolder5"></asp:PlaceHolder>
+                            <div align="center">
+                                <p></p>
+                                <button type="button" class="collapsible">
+                                    Add Panel</button>
+                                <div class="content">
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            Panel Name:
+                    <asp:TextBox ID="TB_addPanelName" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            <asp:Button CssClass="button sucBtn" ID="Button12" runat="server" Text="Submit" OnClick="Button12_Click" />
+                                        </p>
+                                    </div>
+                                </div>
+                                <p></p>
+                                <button type="button" class="collapsible">
+                                    Add a Member to Panel
+                                </button>
+                                <div class="content">
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            Select Panel: 
+                                            <asp:TextBox ID="TB_addMemPanel1" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            Select Member: 
+                                            <asp:TextBox ID="TB_addMemPanel2" runat="server"></asp:TextBox>
+                                        </p>
+                                        <asp:Button CssClass="button sucBtn" ID="Button13" runat="server" Text="Submit" OnClick="Button13_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+
+                        <button type="button" class="collapsible">
+                            Manage FYP's</button>
+                        <div class="content">
+                            <p>Lorem ipsum...</p>
+                            <asp:Button CssClass="button" ID="Button7" runat="server" Text="Load all FYP's" OnClick="Button7_Click" />
+                            <asp:Button CssClass="button spcBtn" ID="Button8" runat="server" Text="Hide Table" OnClick="hideTbl2_Click" />
                             <asp:PlaceHolder runat="server" ID="PlaceHolder2"></asp:PlaceHolder>
+                            <div align="center">
+                                <p></p>
+                                <button type="button" class="collapsible">
+                                    Add FYP                  
+                                </button>
+                                <div class="content">
+                                    <div style="border: 1px solid #555;">
+                                        <p>
+                                            FYP Title:
+                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                                        </p>
+                                        <p>
+                                            FYP Deadline:
+                                        </p>
+                                        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px">
+                                            <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
+                                            <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
+                                            <OtherMonthDayStyle ForeColor="#999999" />
+                                            <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                                            <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+                                            <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
+                                            <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+                                            <WeekendDayStyle BackColor="#CCCCFF" />
+                                        </asp:Calendar>
+                                        <p>
+                                            <asp:Button CssClass="button sucBtn" ID="Button9" runat="server" Text="Submit" OnClick="Button9_Click" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <p></p>
                         <button type="button" class="collapsible">Manage Groups</button>
@@ -202,7 +274,7 @@
                                             <asp:ListItem>Panel Member</asp:ListItem>
                                         </asp:DropDownList>
                                         <p>
-                                            <asp:Button ID="Button5" runat="server" Text="Submit" OnClick="addUserBtn" />
+                                            <asp:Button CssClass="button sucBtn" ID="Button5" runat="server" Text="Submit" OnClick="addUserBtn" />
                                         </p>
                                     </div>
                                 </div>
