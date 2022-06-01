@@ -18,7 +18,26 @@ namespace FYP_Management_System_DB_Final_Project
                     Response.Redirect("Login.aspx");
                 }
                 LoadUserName();
-                role.Text = "Faculty";
+                LoadCommitteeName();
+                role.Text = "COMMITTEE Member";
+            }
+        }
+        protected void LoadCommitteeName()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+
+            string queryLogin = "SELECT fc.comittee_name from FACULTY f,FYP_COMMITTEE fc where f.committee_id=fc.committee_id and f.email='" + Session["Email"].ToString() + "'";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    LabelCommName.Text = reader.GetValue(0).ToString();
+                }
             }
         }
         protected void LoadUserName()
@@ -107,7 +126,7 @@ namespace FYP_Management_System_DB_Final_Project
             }
         }
 
-        protected void loadTable(string query,int placeholderID)
+        protected void loadTable(string query, int placeholderID)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
             {
@@ -167,12 +186,12 @@ namespace FYP_Management_System_DB_Final_Project
                             PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         case 2:
-                            PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
+                            PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         case 3:
                             PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
                             break;
-                            default:
+                        default:
                             break;
                     }
                     PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
@@ -192,12 +211,14 @@ namespace FYP_Management_System_DB_Final_Project
         {
             loadTable("SELECT id, name as Name, email as Email, panel_id as PanelID,committee_id as CommitteeID FROM FACULTY");
         }
-
+        protected void loadCommites_Click(object sender, EventArgs e)
+        {
+            loadTable("select committee_id as ID,comittee_name as Committee_Name from FYP_COMMITTEE", 2);
+        }
         protected void LoadGroups_Click(object sender, EventArgs e)
         {
-            loadTable("SELECT* from Project_Group",3);
+            loadTable("SELECT* from Project_Group", 3);
         }
-
         protected void LoadGroupFYP_Click(object sender, EventArgs e)
         {
             loadTable("SELECT group_id,g.group_name,f.* from Project_Group g inner join FYP f on g.fyp_id=f.fyp_Id", 3);
@@ -222,9 +243,9 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmL;
             SqlCommand cmS;
             SqlCommand cmS2;
-            string uName= TextBox1.Text.ToString();
-            string email= TextBox2.Text.ToString();
-            string pass= TextBox3.Text.ToString();
+            string uName = TextBox1.Text.ToString();
+            string email = TextBox2.Text.ToString();
+            string pass = TextBox3.Text.ToString();
 
             string queryLogin = "select * from Student where email='" + email + "'";
             cmL = new SqlCommand(queryLogin, conn);
@@ -259,7 +280,117 @@ namespace FYP_Management_System_DB_Final_Project
                 }
             }
         }
+        protected void addFacultyBtn(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            SqlCommand cmS2;
+            string uName = F_UName.Text.ToString();
+            string email = F_Email.Text.ToString();
+            string pass = F_Pass.Text.ToString();
 
+            string queryLogin = "select * from Faculty where email='" + email + "'";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    //user Exist
+                    cmL.Dispose();
+                    conn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Allready in Database');", true);
+                }
+                else if (email != "" && pass != "" && uName != "")
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    //user does not
+                    //Create new User
+                    string querySign = "INSERT INTO USERS (email,password) VALUES ('" + email + "','" + pass + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+
+                    string querySign2 = "INSERT INTO Faculty(email, password, name) VALUES('" + email + "', '" + pass + "','" + uName + "')";
+                    cmS2 = new SqlCommand(querySign2, conn);
+                    cmS2.ExecuteNonQuery();
+                    cmS2.Dispose();
+                    conn.Dispose();
+                    //goto Rent Car Page
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Added in Database.');", true);
+                }
+            }
+        }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            string cName = commNameText.Text.ToString();
+
+            string queryLogin = "select * from FYP_COMMITTEE where comittee_name='" + cName + "'";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    cmL.Dispose();
+                    conn.Close();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Allready in Database');", true);
+                }
+                else if (cName != "")
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "INSERT INTO FYP_COMMITTEE (comittee_name) VALUES ('" + cName + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Comitte added Added in Database.');", true);
+                }
+            }
+        }
+        //add Committe Member
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            int F_id = Int16.Parse(DropDownList1.SelectedItem.Value);
+            int FC_id = Int16.Parse(DropDownList3.SelectedItem.Value);
+
+            string queryLogin = "update FACULTY set committee_id=" + FC_id + " where id=" + F_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Update not possible');", true);
+                    cmL.Dispose();
+                    conn.Close();
+                }
+                else
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "update USERS set role='COMMITTEE' from USERS u,Faculty f where u.email=f.email AND f.id=" + F_id;
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                    conn.Close();
+                }
+                
+            }
+
+            
+        }
         protected void hideTbl_Click(object sender, EventArgs e)
         {
             PlaceHolder1.Controls.Clear();
@@ -272,5 +403,11 @@ namespace FYP_Management_System_DB_Final_Project
         {
             PlaceHolder3.Controls.Clear();
         }
+        protected void HideComms_Click(object sender, EventArgs e)
+        {
+            PlaceHolderCommitee.Controls.Clear();
+        }
+
+
     }
 }

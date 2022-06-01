@@ -46,7 +46,6 @@ namespace FYP_Management_System_DB_Final_Project
                     role = reader.GetValue(0).ToString();
                     cmL.Dispose();
                     conn.Close();
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Logged In.'); ", true);
                     Session["Email"] = email;
                     Session["Role"] = role;
                     if (role == "COMMITTEE")
@@ -56,9 +55,11 @@ namespace FYP_Management_System_DB_Final_Project
                     else if (role == "STUDENT") 
                     {
                         Response.Redirect("StudentInterface.aspx");
-
                     }
-
+                    else 
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User Not assigned to any Role'); ", true);
+                    }
                 }
             }
         }
