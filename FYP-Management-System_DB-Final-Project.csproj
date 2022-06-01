@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="EvaluationForm.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="PanelInterface.aspx" />
     <Content Include="StudentInterface.aspx" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
@@ -88,6 +89,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelInterface.aspx.cs">
+      <DependentUpon>PanelInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelInterface.aspx.designer.cs">
+      <DependentUpon>PanelInterface.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FYPinterface.aspx.cs">

@@ -51,6 +51,9 @@ a {
     .button:hover {
         background-color: #2D2B3A;
     }
+.sucBtn:hover {
+    background-color: #35bb78;
+}
 .spcBtn:hover {
     background-color: #FF3D85;
 }
