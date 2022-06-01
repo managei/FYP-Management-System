@@ -76,7 +76,7 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmL;
 
             string details = reportDetails.Text;
-            int reportID = int.Parse(Session["ReportCount"].ToString())-1;
+            int reportID = int.Parse(Session["ReportCount"].ToString());
             if (reportID < 0)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in insertion');", true);
