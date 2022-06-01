@@ -82,7 +82,7 @@ namespace FYP_Management_System_DB_Final_Project
 
         protected void LoadstudentData_Click(object sender, EventArgs e)
         {
-            string q = "select* from student where email='" +Session["Email"] +"'";
+            string q = "select s.student_id,s.email,s.student_name,s.group_id from STUDENT s where email='" +Session["Email"] +"'";
             if (checkQueryIsNull(q) == false)
                 loadTable(q, 1);
         }
