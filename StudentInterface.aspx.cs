@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Text;
+using System.Web.UI.WebControls;
 
 
 namespace FYP_Management_System_DB_Final_Project
@@ -17,28 +13,64 @@ namespace FYP_Management_System_DB_Final_Project
         {
             if (!IsPostBack)
             {
-                if (Session["Email"] == null || Session["Role"].ToString()!= "STUDENT")
+                if (Session["Email"] == null || Session["Role"].ToString() != "STUDENT")
                 {
                     Response.Redirect("Login.aspx");
                 }
             }
-                    LoadUserName();
+            LoadUserName();
             LoadStudentID();
-                    role.Text = "STUDENT";
-            
+            //if (Session["GroupID"] != null)
+            //    GetFYPDeadlines();
+            role.Text = "STUDENT";
+
+
         }
 
+        protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (checkQueryIsNull("select s.group_id from STUDENT s where email='" + Session["Email"] + "'"))
+                {
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+                    conn.Open();
+                    string q = "SELECT Deadline,Title from FYP inner join PROJECT_GROUP on FYP.fyp_Id=PROJECT_GROUP.fyp_id where group_id=" + Session["GroupID"].ToString();
+                    SqlCommand cmL = new SqlCommand(q, conn);
+                    SqlDataReader reader = cmL.ExecuteReader();
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            DateTime date = (DateTime)reader.GetValue(0);
+                            Label label1 = new Label();
+                            label1.Text = "<br />" + reader.GetValue(1).ToString();
+                            if (date == e.Day.Date)
+                            {
+                                e.Cell.BackColor = System.Drawing.Color.Red;
+                                e.Cell.Font.Italic = true;
+                                e.Cell.Font.Size = FontUnit.Small;
+                                e.Cell.Controls.Add(label1);
+                            }
+
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+
+        }
         protected void LoadstudentNotify_Click(object sender, EventArgs e)
         {
             string q = "select n.group_id from Notifications n inner join STUDENT s on n.group_id=s.group_id where email='" + Session["Email"] + "'";
-            if (checkQueryIsNull(q) == false)
+            if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }
 
         protected void LoadstudentReview_Click(object sender, EventArgs e)
         {
             string q = "select r.supervisor_id,f.name,r.detail from REVIEWS r inner join STUDENT s on r.group_id=s.group_id inner join FACULTY f on r.supervisor_id=f.id where s.email='" + Session["Email"] + "'";
-            if (checkQueryIsNull(q) == false)
+            if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }
 
@@ -46,7 +78,7 @@ namespace FYP_Management_System_DB_Final_Project
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
-            string q = "select s.student_id from STUDENT s where email='" + Session["Email"] + "'";
+            string q = "select s.student_id, s.group_id from STUDENT s where email='" + Session["Email"] + "'";
             SqlCommand cmL = new SqlCommand(q, conn);
             SqlDataReader reader = cmL.ExecuteReader();
             if (reader != null)
@@ -56,7 +88,7 @@ namespace FYP_Management_System_DB_Final_Project
                     //for (int i = 0; i < reader.FieldCount; i++)
                     //{
                     Session["StudentID"] = reader.GetValue(0).ToString();
-
+                    Session["GroupID"] = reader.GetValue(1).ToString();
                     //}
                 }
             }
@@ -75,36 +107,36 @@ namespace FYP_Management_System_DB_Final_Project
             {
                 if (reader.Read())
                 {
-                        userName.Text = reader.GetValue(4).ToString();
+                    userName.Text = reader.GetValue(4).ToString();
                 }
             }
         }
 
         protected void LoadstudentData_Click(object sender, EventArgs e)
         {
-            string q = "select s.student_id,s.email,s.student_name,s.group_id from STUDENT s where email='" +Session["Email"] +"'";
-            if (checkQueryIsNull(q) == false)
+            string q = "select s.student_id,s.email,s.student_name,s.group_id from STUDENT s where email='" + Session["Email"] + "'";
+            if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }
 
         protected void LoadstudentFYPData_Click(object sender, EventArgs e)
         {
             string q = "select f.* from FYP f inner join PROJECT_GROUP g on f.fyp_Id=g.fyp_id inner join STUDENT s on s.group_id=g.group_id where email='" + Session["Email"] + "'";
-            if(checkQueryIsNull(q)==false)
-            loadTable(q, 1);
+            if (checkQueryIsNull(q))
+                loadTable(q, 1);
         }
 
         protected void LoadstudentGroupData_Click(object sender, EventArgs e)
         {
             string q = "select g.* from PROJECT_GROUP g inner join STUDENT s on s.group_id=g.group_id where email='" + Session["Email"] + "'";
-            if (checkQueryIsNull(q) == false)
+            if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }
 
         protected void LoadstudentGroupMembersData_Click(object sender, EventArgs e)
         {
             string q = "select s.student_id,s.student_name,s.email,s.group_id,g.group_name from STUDENT s inner join PROJECT_GROUP g on s.group_id=g.group_id where s.group_id=(select group_id from STUDENT where email='" + Session["Email"] + "')";
-            if (checkQueryIsNull(q) == false)
+            if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }
 
@@ -133,10 +165,9 @@ namespace FYP_Management_System_DB_Final_Project
             conn.Open();
             //string q = "select s.student_id from STUDENT s where email='" + Session["Email"] + "'";
             SqlCommand cmL = new SqlCommand(q, conn);
-            
-            if (cmL.ExecuteScalar()==null)
+            object temp = cmL.ExecuteScalar();
+            if (temp != null && temp.GetType() != typeof(DBNull))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No Data');", true);
                 return true;
             }
             conn.Close();
@@ -219,5 +250,6 @@ namespace FYP_Management_System_DB_Final_Project
                 }
             }
         }
+
     }
 }
