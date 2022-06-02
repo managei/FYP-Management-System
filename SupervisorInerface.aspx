@@ -124,7 +124,7 @@
                                     Max
                                 </p>
                                 <hr />
-<%--                                <p>
+                                <p>
                                     4. Slide Design and Content Quality
                                 </p>
                                 <p>
@@ -363,7 +363,7 @@
                                 </asp:RadioButtonList>
                                     Max
                                 </p>
-                                <hr />--%>
+                                <hr />
                                 <asp:Button CssClass="button sucBtn" ID="SubmitEvaluation" runat="server" Text="Submit Evaluation" />
                             </div>
                         </div>
