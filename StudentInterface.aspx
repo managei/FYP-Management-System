@@ -40,8 +40,18 @@
                         <asp:Label ID="role" runat="server" Text="Role: ">Role: </asp:Label>
                         <br />
                         <br />
-                        <asp:Calendar ID="Calendar1" runat="server" Width="354px"></asp:Calendar>
-                    </div>
+                        <asp:Calendar ID="Calendar1" runat="server" Width="220px" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px">
+                            <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
+                            <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
+                            <OtherMonthDayStyle ForeColor="#999999" />
+                            <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                            <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+                            <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
+                            <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+                            <WeekendDayStyle BackColor="#CCCCFF" />
+                        </asp:Calendar>
+                       </div>
+                    
                 </div>
                 <div style="margin: auto; float: right; width: 74%; height:600px;">
                     <div style="border-style: double; border-width: 1px; padding: 10px; background-color:ghostwhite;">
