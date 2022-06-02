@@ -351,7 +351,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <br />
+                                <p/>
                                 <div align="center">
                                     <button type="button" class="collapsible">
                                         Edit Report
