@@ -347,12 +347,12 @@
                     <asp:TextBox ID="reportDetails" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
+                                            <asp:Button CssClass="button sucBtn" ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
                                         </p>
                                     </div>
                                 </div>
                                 <br />
-                                
+
                                 <div align="center">
                                     <br />
                                     <button type="button" class="collapsible">
@@ -369,12 +369,18 @@
                     <asp:TextBox ID="getNewDetails" runat="server"></asp:TextBox>
                                             </p>
                                             <p>
-                                                <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
+                                                <asp:Button CssClass="button sucBtn" ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <p></p>
+                        <button type="button" class="collapsible">Manage SSRS Reports</button>
+                        <div class="content">
+                            <p>Here you can view and manage all Reports</p>
+                            <asp:Button CssClass="button sucBtn" ID="LoadReportPage" runat="server"/>
                         </div>
                     </div>
                 </div>

@@ -123,13 +123,13 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.TextBox TB_slcFYP;
 
         /// <summary>
-        /// TextBox1 control.
+        /// TB_slcGrp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TB_slcGrp;
 
         /// <summary>
         /// sbmtSlcFYP control.

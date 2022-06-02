@@ -30,17 +30,18 @@
                 </div>
             </nav>
         </header>
-        <div class="main-body" style="background: #F6F5FC; margin-top: 10px; margin-bottom: 10px; padding: 10px; overflow: auto;background-image: url('back.jpg');">
-            
+        <div class="main-body" style="background: #F6F5FC; margin-top: 10px; margin-bottom: 10px; padding: 10px; overflow: auto; background-image: url('back.jpg');">
+
             <div>
-                <div style="margin: auto; float: left; width: 25%; background-color:ghostwhite">
+                <div style="margin: auto; float: left; width: 25%; background-color: ghostwhite">
                     <div style="border-style: double; border-width: 1px; padding: 10px;">
                         <asp:Label ID="userName" runat="server" Font-Bold="False" Font-Size="X-Large" ForeColor="Black" Text="User Name: ">User Name: </asp:Label>
                         <br />
                         <asp:Label ID="role" runat="server" Text="Role: ">Role: </asp:Label>
                         <br />
                         <br />
-                        <asp:Calendar ID="Calendar1" runat="server" Width="220px" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px">
+
+                        <asp:Calendar Width="100%" ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px">
                             <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                             <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
                             <OtherMonthDayStyle ForeColor="#999999" />
@@ -50,34 +51,34 @@
                             <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
                             <WeekendDayStyle BackColor="#CCCCFF" />
                         </asp:Calendar>
-                       </div>
-                    
+                    </div>
+
                 </div>
-                <div style="margin: auto; float: right; width: 74%; height:600px;">
-                    <div style="border-style: double; border-width: 1px; padding: 10px; background-color:ghostwhite;">
+                <div style="margin: auto; float: right; width: 74%; height: 600px;">
+                    <div style="border-style: double; border-width: 1px; padding: 10px; background-color: ghostwhite;">
                         <h2>Welcome to the Student Portal
                         </h2>
                         <p>You have access to following operations: </p>
-                       <!--<button type="button" class="collapsible">View Student Data</button>-->
-                       <!-- <div class="content">   -->
-                            <p>Over here you can view all Student data</p>
-                            <asp:Button CssClass="button" ID="loadStudentData" runat="server" Text="Load Student Data" OnClick="LoadstudentData_Click" />                            
-                            <asp:Button CssClass="button" ID="loadFYP" runat="server" Text="Load FYP" OnClick="LoadstudentFYPData_Click" />
-                            <asp:Button CssClass="button" ID="loadgroup" runat="server" Text="Load Group" OnClick="LoadstudentGroupData_Click" />
-                        
-                            <asp:Button CssClass="button" ID="loadMembers" runat="server" Text="Load Members" OnClick="LoadstudentGroupMembersData_Click" /> 
-                            <asp:Button CssClass="button" ID="loadNotifications" runat="server" Text="Load Notifications" OnClick="LoadstudentNotify_Click" />
-                            <asp:Button CssClass="button" ID="loadReviews" runat="server" Text="Load Review" OnClick="LoadstudentReview_Click" />
+                        <!--<button type="button" class="collapsible">View Student Data</button>-->
+                        <!-- <div class="content">   -->
+                        <p>Over here you can view all Student data</p>
+                        <asp:Button CssClass="button" ID="loadStudentData" runat="server" Text="Load Student Data" OnClick="LoadstudentData_Click" />
+                        <asp:Button CssClass="button" ID="loadFYP" runat="server" Text="Load FYP" OnClick="LoadstudentFYPData_Click" />
+                        <asp:Button CssClass="button" ID="loadgroup" runat="server" Text="Load Group" OnClick="LoadstudentGroupData_Click" />
 
-                            <asp:Button CssClass="button spcBtn" ID="Button10" runat="server" Text="Hide Table" OnClick="hideTbl_Click" />
-                            <br />
-                            <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
-                            <br />
-                     
-                        </div>
+                        <asp:Button CssClass="button" ID="loadMembers" runat="server" Text="Load Members" OnClick="LoadstudentGroupMembersData_Click" />
+                        <asp:Button CssClass="button" ID="loadNotifications" runat="server" Text="Load Notifications" OnClick="LoadstudentNotify_Click" />
+                        <asp:Button CssClass="button" ID="loadReviews" runat="server" Text="Load Review" OnClick="LoadstudentReview_Click" />
+
+                        <asp:Button CssClass="button spcBtn" ID="Button10" runat="server" Text="Hide Table" OnClick="hideTbl_Click" />
+                        <br />
+                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                        <br />
+
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
     </form>

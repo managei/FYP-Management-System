@@ -125,18 +125,6 @@ namespace FYP_Management_System_DB_Final_Project
                         case 1:
                             PlaceHolderGroup.Controls.Add(new Literal { Text = html.ToString() });
                             break;
-                        //case 2:
-                        //    PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 3:
-                        //    PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 4:
-                        //    PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 5:
-                        //    PlaceHolder5.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
                         default:
                             break;
                     }
@@ -156,7 +144,19 @@ namespace FYP_Management_System_DB_Final_Project
         // add fyp to group
         protected void sbmtSlcFYP_Click(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            int F_id = int.Parse(TB_slcFYP.Text);
+            int G_id = int.Parse(TB_slcGrp.Text);
 
+            string queryLogin = "update PROJECT_GROUP set fyp_id=" + F_id + " where group_id=" + G_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            cmL.Dispose();
+            reader.Close();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Added FYP to Group');", true);
+            conn.Close();
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

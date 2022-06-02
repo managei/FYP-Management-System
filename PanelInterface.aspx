@@ -64,7 +64,7 @@
                                         <asp:TextBox ID="TB_slcFYP" runat="server"></asp:TextBox>
                                     </p>
                                     <p>Select Group: 
-                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TB_slcGrp" runat="server"></asp:TextBox>
                                     </p>
                                     <p>
                                         <asp:Button CssClass="button sucBtn" ID="sbmtSlcFYP" runat="server" Text="Submit" OnClick="sbmtSlcFYP_Click" />
