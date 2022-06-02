@@ -163,7 +163,6 @@ namespace FYP_Management_System_DB_Final_Project
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
-            //string q = "select s.student_id from STUDENT s where email='" + Session["Email"] + "'";
             SqlCommand cmL = new SqlCommand(q, conn);
             object temp = cmL.ExecuteScalar();
             if (temp != null && temp.GetType() != typeof(DBNull))
@@ -232,15 +231,6 @@ namespace FYP_Management_System_DB_Final_Project
                     {
                         case 1:
                             PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
-                            break;
-                        case 2:
-                            //PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
-                            break;
-                        case 3:
-                            //PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
-                            break;
-                        case 4:
-                            //PlaceHolder4.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         default:
                             break;

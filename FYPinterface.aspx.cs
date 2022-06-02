@@ -754,13 +754,34 @@ namespace FYP_Management_System_DB_Final_Project
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
             conn.Open();
             SqlCommand cmL;
+            SqlCommand cmS;
             int F_id = int.Parse(TB_setSuprv.Text);
 
             string queryLogin = "insert SUPERVISOR (faculty_id) values('"+F_id+"')";
             cmL = new SqlCommand(queryLogin, conn);
             SqlDataReader reader = cmL.ExecuteReader();
-            cmL.Dispose();
-            reader.Close();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Update not possible');", true);
+                    cmL.Dispose();
+                    conn.Close();
+                }
+                else
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "update USERS set role='SUPERVISOR' from USERS u,Faculty f where u.email=f.email AND f.id=" + F_id;
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Added user: " + F_id + " as Supervisor');", true);
+
+                    cmS.Dispose();
+                    conn.Close();
+                }
+
+            }
             conn.Close();
         }
         protected void hideTbl_Click(object sender, EventArgs e)

@@ -72,6 +72,7 @@
     <Content Include="PanelInterface.aspx" />
     <Content Include="StudentInterface.aspx" />
     <Content Include="Style.css" />
+    <Content Include="SupervisorInerface.aspx" />
     <Content Include="Web.config" />
     <Content Include="FYPinterface.aspx" />
   </ItemGroup>
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="StudentInterface.aspx.designer.cs">
       <DependentUpon>StudentInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupervisorInerface.aspx.cs">
+      <DependentUpon>SupervisorInerface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupervisorInerface.aspx.designer.cs">
+      <DependentUpon>SupervisorInerface.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
