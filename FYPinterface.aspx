@@ -337,7 +337,7 @@
                             <br />
                             <div align="center">
                                 <button type="button" class="collapsible">
-                                    Add Report (load first)
+                                    Add Report
                                 </button>
                                 <div class="content">
 
@@ -352,7 +352,9 @@
                                     </div>
                                 </div>
                                 <br />
+                                
                                 <div align="center">
+                                    <br />
                                     <button type="button" class="collapsible">
                                         Edit Report
                                     </button>
