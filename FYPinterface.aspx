@@ -371,11 +371,27 @@
                                             <p>
                                                 <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
                                             </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <p></p>
+                                
+                                            <button type="button" class="collapsible">Audit Log</button>
+                                                <div class="content">
+                                                    <p>Here you can view the audit log</p>
+                                                  
+                                                    <asp:Button CssClass="button" ID="auditLogButton" runat="server" Text="Load DML Log" OnClick="LoadDMLLog_Click" />
+                                                    <asp:Button CssClass="button" ID="auditLogButton2" runat="server" Text="Load DDL Log" OnClick="LoadDDLLog_Click" />
+                                                    <asp:Button CssClass="button" ID="clearDml" runat="server" Text="Clear DML Log" OnClick="ClearDMLLog_Click" />
+                                                   
+                                                    <asp:PlaceHolder runat="server" ID="PlaceHolder6"></asp:PlaceHolder>
+                                            
+                                                </div>
+                                    
+                                
+                            
                     </div>
                 </div>
             </div>

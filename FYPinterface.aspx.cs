@@ -143,8 +143,20 @@ namespace FYP_Management_System_DB_Final_Project
             {
                 Session["ReportCount"]= cmL.ExecuteScalar().ToString();
             }
+            conn.Close ();
         }
-    
+
+        protected void ClearDMLLog_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            string q2 = "truncate table AuditLog";
+            cmL = new SqlCommand(q2, conn);
+            cmL.ExecuteNonQuery();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Cleared DML Log');", true);
+            conn.Close();
+        }
         protected void LoadReports_Click(object sender, EventArgs e)
         {
             getReportCount();
@@ -161,6 +173,21 @@ namespace FYP_Management_System_DB_Final_Project
                     loadTable(q, 4);
             }
         }
+
+        protected void LoadDMLLog_Click(object sender, EventArgs e)
+        { 
+           string q = "select* from AuditLOG";
+           if (checkQueryIsNull(q) == false)
+               loadTable(q, 8);
+        }
+
+        protected void LoadDDLLog_Click(object sender, EventArgs e)
+        {
+            string q = "select* from AUDIT_LOG_DDL";
+            if (checkQueryIsNull(q) == false)
+                loadTable(q, 8);
+        }
+
 
         protected void LoadReports_Click()
         {
@@ -439,6 +466,9 @@ namespace FYP_Management_System_DB_Final_Project
                             break ;
                         case 7:
                             PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
+                        case 8:
+                            PlaceHolder6.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         default:
                             break;
