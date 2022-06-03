@@ -111,6 +111,11 @@ namespace FYP_Management_System_DB_Final_Project
             loadTable("select pg.* from PROJECT_GROUP pg inner join SUPERVISOR s on pg.supervisor_id=s.faculty_id where s.faculty_id=" + Session["Sup_id"].ToString(), 1);
         }
 
+        protected void LoadReviews_Click(object sender, EventArgs e)
+        {
+            loadTable("SELECT* from REVIEWS where supervisor_id = " + Session["Sup_id"].ToString(), 1);
+        }
+
         protected void HideT1_Click(object sender, EventArgs e)
         {
             PlaceHolderGroup.Controls.Clear();
@@ -131,5 +136,19 @@ namespace FYP_Management_System_DB_Final_Project
             Session["Email"] = null;
             Response.Redirect("Login.aspx");
         }
+        protected void BtnAddReview_Click(object sender, EventArgs e)
+        {
+            string grpID = TB_grpId.Text.ToString();
+            string revdet = TB_reviewDetail.Text.ToString();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            string queryLogin = "INSERT INTO REVIEWS (detail,group_id,supervisor_id) VALUES ('" + revdet + "'," + grpID + "," + Session["Sup_id"].ToString() + ")";
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            cmL.Dispose();
+            conn.Close();
+        }
+
     }
 }
