@@ -644,8 +644,9 @@ namespace FYP_Management_System_DB_Final_Project
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UpdateDetailsOfReport;
 
-        /// auditLogButton control.
         /// <summary>
+        /// auditLogButton control.
+        /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
@@ -687,6 +688,5 @@ namespace FYP_Management_System_DB_Final_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button LoadReportPage;
-
     }
 }
