@@ -349,8 +349,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <br />
-
+                                <p/>
                                 <div align="center">
                                     <br />
                                     <button type="button" class="collapsible">

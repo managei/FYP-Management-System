@@ -34,10 +34,13 @@
                     <div style="border-style: double; border-width: 1px; padding: 10px;">
                         <asp:Label ID="userName" runat="server" Font-Bold="False" Font-Size="X-Large" ForeColor="Black" Text="User Name: ">User Name: </asp:Label>
                         <br />
-                        <asp:Label ID="role" runat="server" Text="Role: ">Role: </asp:Label>
-                        <br />
-                        <br />
+                        <p>
+                            Role
 
+                        <asp:Label ID="role" runat="server" Text="Role: "></asp:Label>
+                        </p>
+                        <br />
+                        <br />
                         <asp:Calendar Width="100%" ID="Calendar1" OnDayRender="Calendar1_DayRender" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px">
                             <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                             <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
