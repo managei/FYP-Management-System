@@ -19,9 +19,6 @@
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
                             <asp:LinkButton ID="HomeButton" runat="server" OnClick="LinkButton1_Click">Home</asp:LinkButton>
-                            &nbsp;</li>
-                        <li class="nav-item">
-                            <asp:LinkButton ID="ProfileButton" runat="server" OnClick="ProfileButton_Click">Profile</asp:LinkButton>
                         </li>
                         <li class="nav-item">
                             <asp:LinkButton ID="LogOutButton" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
@@ -40,7 +37,7 @@
                         <asp:Label ID="role" runat="server" Text="Role: ">Role: </asp:Label>
                         <br />
                         <br />
-                        
+
                         <asp:Calendar Width="100%" ID="Calendar1" OnDayRender="Calendar1_DayRender" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px">
                             <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                             <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />

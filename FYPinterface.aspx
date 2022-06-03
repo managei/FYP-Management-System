@@ -19,8 +19,6 @@
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
                             <asp:LinkButton ID="LinkButton1" runat="server">Home</asp:LinkButton>
-                            &nbsp;</li>
-                        <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton2" runat="server">Profile</asp:LinkButton>
                         </li>
                         <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
                         </li>

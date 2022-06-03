@@ -19,10 +19,8 @@
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
                             <asp:LinkButton ID="HomeButton" runat="server" OnClick="LinkButton1_Click">Home</asp:LinkButton>
-                            &nbsp;</li>
-                        <li class="nav-item">
-                            <asp:LinkButton ID="ProfileButton" runat="server" OnClick="ProfileButton_Click">Profile</asp:LinkButton>
                         </li>
+
                         <li class="nav-item">
                             <asp:LinkButton ID="LogOutButton" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
                         </li>
@@ -56,14 +54,15 @@
                                 <button type="button" class="collapsible">Add Review</button>
                                 <div class="content">
                                     <p>
-                                    Input GroupId:
-                                    <asp:TextBox ID="TB_grpId" runat="server" ></asp:TextBox>
+                                        Input GroupId:
+                                    <asp:TextBox ID="TB_grpId" runat="server"></asp:TextBox>
                                     </p>
-                                    <p> Input Review for group
-                                    </p>
-                                    <asp:TextBox ID="TB_reviewDetail" runat="server" TextMode="MultiLine" ></asp:TextBox>
                                     <p>
-                                    <asp:Button CssClass="button sucBtn" ID="BtnAddReview" runat="server" Text="Submit" OnClick="BtnAddReview_Click"/>
+                                        Input Review for group
+                                    </p>
+                                    <asp:TextBox ID="TB_reviewDetail" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    <p>
+                                        <asp:Button CssClass="button sucBtn" ID="BtnAddReview" runat="server" Text="Submit" OnClick="BtnAddReview_Click" />
                                     </p>
                                 </div>
                             </div>

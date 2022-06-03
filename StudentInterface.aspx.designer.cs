@@ -33,15 +33,6 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.LinkButton HomeButton;
 
         /// <summary>
-        /// ProfileButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ProfileButton;
-
-        /// <summary>
         /// LogOutButton control.
         /// </summary>
         /// <remarks>
