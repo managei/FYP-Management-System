@@ -19,8 +19,6 @@
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
                             <asp:LinkButton ID="LinkButton1" runat="server">Home</asp:LinkButton>
-                            &nbsp;</li>
-                        <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton2" runat="server">Profile</asp:LinkButton>
                         </li>
                         <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
                         </li>
@@ -347,12 +345,12 @@
                     <asp:TextBox ID="reportDetails" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
+                                            <asp:Button CssClass="button sucBtn" ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
                                         </p>
                                     </div>
                                 </div>
                                 <br />
-                                
+
                                 <div align="center">
                                     <br />
                                     <button type="button" class="collapsible">
@@ -369,7 +367,7 @@
                     <asp:TextBox ID="getNewDetails" runat="server"></asp:TextBox>
                                             </p>
                                             <p>
-                                                <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
+                                                <asp:Button CssClass="button sucBtn" ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
                                             </p>
                                             </div>
                                         </div>
@@ -392,6 +390,13 @@
                                     
                                 
                             
+                        </div>
+                        <p></p>
+                        <button type="button" class="collapsible">Manage SSRS Reports</button>
+                        <div class="content">
+                            <p>Here you can view and manage all Reports</p>
+                            <asp:Button CssClass="button sucBtn" ID="LoadReportPage" runat="server"/>
+                        </div>
                     </div>
                 </div>
             </div>

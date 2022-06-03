@@ -33,15 +33,6 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
 
         /// <summary>
-        /// LinkButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-
-        /// <summary>
         /// LinkButton3 control.
         /// </summary>
         /// <remarks>
@@ -653,9 +644,8 @@ namespace FYP_Management_System_DB_Final_Project
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UpdateDetailsOfReport;
 
-        /// <summary>
         /// auditLogButton control.
-        /// </summary>
+        /// <summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
@@ -688,5 +678,15 @@ namespace FYP_Management_System_DB_Final_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder6;
+
+        /// <summary>
+        /// LoadReportPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LoadReportPage;
+
     }
 }

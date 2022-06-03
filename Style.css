@@ -129,3 +129,8 @@ a {
 .td {
     border: 1px solid #2D2B3A;
 }
+.callender {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

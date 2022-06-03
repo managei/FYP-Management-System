@@ -11,7 +11,7 @@ namespace FYP_Management_System_DB_Final_Project
 {
 
 
-    public partial class StudentInterface
+    public partial class SupervisorInerface
     {
 
         /// <summary>
@@ -60,84 +60,66 @@ namespace FYP_Management_System_DB_Final_Project
         protected global::System.Web.UI.WebControls.Label role;
 
         /// <summary>
-        /// Calendar1 control.
+        /// LoadGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Button LoadGroups;
 
         /// <summary>
-        /// loadStudentData control.
+        /// LoadReviews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadStudentData;
+        protected global::System.Web.UI.WebControls.Button LoadReviews;
 
         /// <summary>
-        /// loadFYP control.
+        /// HideT1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadFYP;
+        protected global::System.Web.UI.WebControls.Button HideT1;
 
         /// <summary>
-        /// loadgroup control.
+        /// PlaceHolderGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadgroup;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderGroup;
 
         /// <summary>
-        /// loadMembers control.
+        /// TB_grpId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadMembers;
+        protected global::System.Web.UI.WebControls.TextBox TB_grpId;
 
         /// <summary>
-        /// loadNotifications control.
+        /// TB_reviewDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadNotifications;
+        protected global::System.Web.UI.WebControls.TextBox TB_reviewDetail;
 
         /// <summary>
-        /// loadReviews control.
+        /// BtnAddReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loadReviews;
-
-        /// <summary>
-        /// Button10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button10;
-
-        /// <summary>
-        /// PlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button BtnAddReview;
     }
 }
