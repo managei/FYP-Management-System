@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>FYP_DATABASE</DataSourceReference>
+      <CommandText>SELECT s.student_id, s.student_name, s.email, f.fyp_Id, f.Title, f.Deadline, f.Grade, f.Comment
+FROM     FYP AS f INNER JOIN
+                  PROJECT_GROUP AS g ON f.fyp_Id = g.group_id INNER JOIN
+                  STUDENT AS s ON s.group_id = g.group_id</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="student_id">
+        <DataField>student_id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="student_name">
+        <DataField>student_name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="email">
+        <DataField>email</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="fyp_Id">
+        <DataField>fyp_Id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Title">
+        <DataField>Title</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Deadline">
+        <DataField>Deadline</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Grade">
+        <DataField>Grade</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Comment">
+        <DataField>Comment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>FYP_DATABASE</DataSourceReference>
+      <CommandText>SELECT g.group_id, g.group_name, g.panel_id, 'Evaluation Missing' AS Detail
+FROM     EVALUATIONS AS e FULL OUTER JOIN
+                  PROJECT_GROUP AS g ON g.group_id = e.panel_id
+WHERE  (e.detail = 'Missing')
+UNION
+SELECT DISTINCT g.group_id, g.group_name, g.panel_id, 'Evaluation Missing' AS Detail
+FROM     EVALUATIONS AS e CROSS JOIN
+                  PROJECT_GROUP AS g
+WHERE  (g.group_id NOT IN
+                      (SELECT group_id
+                       FROM      EVALUATIONS))</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="group_id">
+        <DataField>group_id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="group_name">
+        <DataField>group_name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="panel_id">
+        <DataField>panel_id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Detail">
+        <DataField>Detail</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
