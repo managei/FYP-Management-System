@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace FYP_Management_System_DB_Final_Project
 {
@@ -66,6 +62,128 @@ namespace FYP_Management_System_DB_Final_Project
             }
         }
 
+        protected int calculateEvaluation()
+        {
+
+            int sum = 0;
+            sum += (int.Parse(RadioButtonList1.SelectedValue));
+            sum += (int.Parse(RadioButtonList2.SelectedValue));
+            sum += (int.Parse(RadioButtonList3.SelectedValue));
+            sum += (int.Parse(RadioButtonList4.SelectedValue));
+            sum += (int.Parse(RadioButtonList5.SelectedValue));
+            sum += (int.Parse(RadioButtonList6.SelectedValue));
+            sum += (int.Parse(RadioButtonList7.SelectedValue));
+            sum += (int.Parse(RadioButtonList8.SelectedValue));
+            sum += (int.Parse(RadioButtonList9.SelectedValue));
+            sum += (int.Parse(RadioButtonList10.SelectedValue));
+            sum += (int.Parse(RadioButtonList11.SelectedValue));
+            sum += (int.Parse(RadioButtonList12.SelectedValue));
+            sum += (int.Parse(RadioButtonList13.SelectedValue));
+            sum += (int.Parse(RadioButtonList14.SelectedValue));
+            sum += (int.Parse(RadioButtonList15.SelectedValue));
+            return sum;
+        }
+        protected string calculateGade(int marks)
+        {
+            string grade;
+            if (marks < 75)
+            {
+                grade = "F";
+            }
+            else if (marks < 80)
+            {
+                grade = "D-";
+            }
+            else if (marks < 85)
+            {
+                grade = "D";
+            }
+            else if (marks < 90)
+            {
+                grade = "D+";
+            }
+            else if (marks < 95)
+            {
+                grade = "C-";
+            }
+            else if (marks < 100)
+            {
+                grade = "C";
+            }
+            else if (marks < 105)
+            {
+                grade = "C+";
+            }
+            else if (marks < 110)
+            {
+                grade = "B-";
+            }
+            else if (marks < 115)
+            {
+                grade = "B";
+            }
+            else if (marks < 120)
+            {
+                grade = "B+";
+            }
+            else if (marks < 130)
+            {
+                grade = "A-";
+            }
+            else if (marks < 140)
+            {
+                grade = "A";
+            }
+            else
+            {
+                grade = "A+";
+            }
+            return grade;
+        }
+        protected void SubmitEvaluation_Click(object sender, EventArgs e)
+        {
+            string grpId = TB_Groupid.Text.ToString();
+            if (grpId != null)
+            {
+
+                int marks = calculateEvaluation();
+                string grade = calculateGade(marks);
+                string details = evalFormDetails.Text.ToString();
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+                conn.Open();
+                SqlCommand cmL;
+                SqlCommand cmS;
+                SqlCommand cm3;
+                string queryLogin = "SELECT * from EVALUATIONS where panel_id=" + Session["PanelId"].ToString() + " and group_id=" + grpId;
+                cmL = new SqlCommand(queryLogin, conn);
+                SqlDataReader reader = cmL.ExecuteReader();
+                if (reader != null)
+                {
+                    if (reader.Read())
+                    {
+                        cmL.Dispose();
+                        conn.Close();
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('FYP allready exist with this name');", true);
+                    }
+                    else
+                    {
+                        cmL.Dispose();
+                        reader.Close();
+                        string querySign = "INSERT into EVALUATIONS (detail,group_id,panel_id,marks,grade) values('" + details + "'," + grpId + "," + Session["PanelId"].ToString() + "," + marks + ",'" + grade + "')";
+                        cmS = new SqlCommand(querySign, conn);
+                        if (cmS.ExecuteNonQuery() > 0)
+                        {
+                            string query3 = "update fyp SET Grade='" + grade + "' from FYP f,PROJECT_GROUP pg where f.fyp_Id=pg.fyp_id AND pg.group_id=" + grpId;
+                            cm3 = new SqlCommand(query3, conn);
+                            cm3.ExecuteNonQuery();
+                            cm3.Dispose();
+                        }
+                        cmS.Dispose();
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Evaluation Done: Marks = " + marks + " out of 150 grade = '" + grade + ");", true);
+                    }
+                }
+            }
+        }
         protected void loadTable(string query, int placeholderID)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
@@ -98,7 +216,6 @@ namespace FYP_Management_System_DB_Final_Project
                             html.Append("</tr>");
                         }
                         index++;
-
                         string temp;
                         html.Append("<tr>");
                         for (int i = 0; i < sdr.FieldCount; i++)
@@ -113,30 +230,15 @@ namespace FYP_Management_System_DB_Final_Project
                         }
                         html.Append("</tr>");
                     }
-
                     html.Append("</table>");
                     html.Append("<br/>");
                     //Table end.
-
-
                     //Append the HTML string to Placeholder.
                     switch (placeholderID)
                     {
                         case 1:
                             PlaceHolderGroup.Controls.Add(new Literal { Text = html.ToString() });
                             break;
-                        //case 2:
-                        //    PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 3:
-                        //    PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 4:
-                        //    PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
-                        //case 5:
-                        //    PlaceHolder5.Controls.Add(new Literal { Text = html.ToString() });
-                        //    break;
                         default:
                             break;
                     }
@@ -146,7 +248,7 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void LoadGroup_Click(object sender, EventArgs e)
         {
-            loadTable("select g.group_id,g.group_name,p.* from PROJECT_GROUP g inner join PANEL p on g.panel_id=p.panel_id order by g.group_id", 1);
+            loadTable("select g.group_id as GroupID,g.group_name as GroupName,e.marks as EvaluationMarks,e.grade as Grade,e.detail  from PROJECT_GROUP g inner join PANEL p on g.panel_id=p.panel_id left join EVALUATIONS e on e.group_id=g.group_id where p.panel_id=" + Session["PanelId"].ToString() + " order by g.group_id", 1);
         }
 
         protected void LoadFYP_Click(object sender, EventArgs e)
@@ -156,7 +258,19 @@ namespace FYP_Management_System_DB_Final_Project
         // add fyp to group
         protected void sbmtSlcFYP_Click(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            int F_id = int.Parse(TB_slcFYP.Text);
+            int G_id = int.Parse(TB_slcGrp.Text);
 
+            string queryLogin = "update PROJECT_GROUP set fyp_id=" + F_id + " where group_id=" + G_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            cmL.Dispose();
+            reader.Close();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Added FYP to Group');", true);
+            conn.Close();
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

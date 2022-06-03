@@ -19,8 +19,6 @@
                     <ul class="navbar-nav">
                         <li class="nav-item activeBtn">
                             <asp:LinkButton ID="LinkButton1" runat="server">Home</asp:LinkButton>
-                            &nbsp;</li>
-                        <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton2" runat="server">Profile</asp:LinkButton>
                         </li>
                         <li class="nav-item">&nbsp;<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">LogOut</asp:LinkButton>
                         </li>
@@ -337,7 +335,7 @@
                             <br />
                             <div align="center">
                                 <button type="button" class="collapsible">
-                                    Add Report (load first)
+                                    Add Report
                                 </button>
                                 <div class="content">
 
@@ -347,12 +345,13 @@
                     <asp:TextBox ID="reportDetails" runat="server"></asp:TextBox>
                                         </p>
                                         <p>
-                                            <asp:Button ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
+                                            <asp:Button CssClass="button sucBtn" ID="createReportButton" runat="server" Text="Create Report" OnClick="createReport_Click" />
                                         </p>
                                     </div>
                                 </div>
                                 <p/>
                                 <div align="center">
+                                    <br />
                                     <button type="button" class="collapsible">
                                         Edit Report
                                     </button>
@@ -367,12 +366,34 @@
                     <asp:TextBox ID="getNewDetails" runat="server"></asp:TextBox>
                                             </p>
                                             <p>
-                                                <asp:Button ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
+                                                <asp:Button CssClass="button sucBtn" ID="UpdateDetailsOfReport" runat="server" Text="Update" OnClick="updateReport_Click" />
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <p></p>
+
+                        <button type="button" class="collapsible">Audit Log</button>
+                        <div class="content">
+                            <p>Here you can view the audit log</p>
+
+                            <asp:Button CssClass="button" ID="auditLogButton" runat="server" Text="Load DML Log" OnClick="LoadDMLLog_Click" />
+                            <asp:Button CssClass="button" ID="auditLogButton2" runat="server" Text="Load DDL Log" OnClick="LoadDDLLog_Click" />
+                            <asp:Button CssClass="button" ID="clearDml" runat="server" Text="Clear DML Log" OnClick="ClearDMLLog_Click" />
+
+                            <asp:PlaceHolder runat="server" ID="PlaceHolder6"></asp:PlaceHolder>
+
+                        </div>
+
+
+
+                        <p></p>
+                        <button type="button" class="collapsible">Manage SSRS Reports</button>
+                        <div class="content">
+                            <p>Here you can view and manage all Reports</p>
+                            <asp:Button CssClass="button sucBtn" ID="LoadReportPage" runat="server" />
                         </div>
                     </div>
                 </div>
