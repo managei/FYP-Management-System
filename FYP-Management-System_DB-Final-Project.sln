@@ -5,16 +5,29 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FYP-Management-System_DB-Final-Project", "FYP-Management-System_DB-Final-Project.csproj", "{23A1629A-79D8-4241-A342-2ACB9F1296D2}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "FYP_Managerment_Project_Reports", "..\FYP_Managerment_Project_Reports\FYP_Managerment_Project_Reports.rptproj", "{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A1629A-79D8-4241-A342-2ACB9F1296D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Debug|Any CPU.ActiveCfg = Debug
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Debug|Any CPU.Build.0 = Debug
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Debug|Any CPU.Deploy.0 = Debug
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Release|Any CPU.ActiveCfg = Release
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Release|Any CPU.Build.0 = Release
+		{DD12E17C-9E4B-42E8-B57A-71A6455E32F9}.Release|Any CPU.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
