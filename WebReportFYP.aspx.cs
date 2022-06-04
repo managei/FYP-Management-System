@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FYP_Management_System_DB_Final_Project
 {
-    public partial class Welcome : System.Web.UI.Page
+    public partial class WebReportFYP : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

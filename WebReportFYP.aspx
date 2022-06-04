@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Welcome.aspx.cs" Inherits="FYP_Management_System_DB_Final_Project.Welcome" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebReportFYP.aspx.cs" Inherits="FYP_Management_System_DB_Final_Project.WebReportFYP" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Hi
         </div>
     </form>
 </body>

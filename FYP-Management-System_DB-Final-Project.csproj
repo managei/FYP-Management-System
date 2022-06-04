@@ -67,17 +67,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EvaluationForm.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="PanelInterface.aspx" />
+    <Content Include="StudentInterface.aspx" />
+    <Content Include="Style.css" />
+    <Content Include="SupervisorInerface.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Welcome.aspx" />
+    <Content Include="FYPinterface.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Welcome.aspx.cs">
-      <DependentUpon>Welcome.aspx</DependentUpon>
+    <Compile Include="EvaluationForm.aspx.cs">
+      <DependentUpon>EvaluationForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Welcome.aspx.designer.cs">
-      <DependentUpon>Welcome.aspx</DependentUpon>
+    <Compile Include="EvaluationForm.aspx.designer.cs">
+      <DependentUpon>EvaluationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelInterface.aspx.cs">
+      <DependentUpon>PanelInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelInterface.aspx.designer.cs">
+      <DependentUpon>PanelInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FYPinterface.aspx.cs">
+      <DependentUpon>FYPinterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FYPinterface.aspx.designer.cs">
+      <DependentUpon>FYPinterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentInterface.aspx.cs">
+      <DependentUpon>StudentInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentInterface.aspx.designer.cs">
+      <DependentUpon>StudentInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupervisorInerface.aspx.cs">
+      <DependentUpon>SupervisorInerface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupervisorInerface.aspx.designer.cs">
+      <DependentUpon>SupervisorInerface.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
