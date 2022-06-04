@@ -99,6 +99,9 @@ namespace FYP_Management_System_DB_Final_Project
                         case 1:
                             PlaceHolderGroup.Controls.Add(new Literal { Text = html.ToString() });
                             break;
+                        case 2:
+                            PlaceHolder7.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
                         default:
                             break;
                     }
@@ -150,5 +153,45 @@ namespace FYP_Management_System_DB_Final_Project
             conn.Close();
         }
 
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            loadTable("select group_id as GroupSentTo,details as Details from Notifications where supervisor_id=" + Session["Sup_id"].ToString(), 2);
+        }
+
+        protected void Button14_Click(object sender, EventArgs e)
+        {
+            PlaceHolder7.Controls.Clear();
+        }
+
+        protected void Button15_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            string G_id = TextBox6.Text.ToString();
+            string details = TextBox5.Text.ToString();
+            string queryLogin = "select * from PROJECT_GROUP where group_id=" + G_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "insert Notifications(group_id,supervisor_id,details) VALUES (" + G_id + "," + Session["Sup_id"].ToString() + ",'" + details + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                }
+                else
+                {
+                    cmL.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }

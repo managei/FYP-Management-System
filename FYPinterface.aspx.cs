@@ -40,7 +40,7 @@ namespace FYP_Management_System_DB_Final_Project
                 if (reader.Read())
                 {
                     LabelCommName.Text = reader.GetValue(0).ToString();
-                    Session["CommitteeID"]=reader.GetValue(1).ToString();
+                    Session["CommitteeID"] = reader.GetValue(1).ToString();
                 }
             }
         }
@@ -98,16 +98,16 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmL;
 
             string details = reportDetails.Text;
-            int reportID = int.Parse(Session["ReportCount"].ToString())+1;
+            int reportID = int.Parse(Session["ReportCount"].ToString()) + 1;
             if (reportID < 0)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error in insertion');", true);
                 return;
             }
-            string q1 = "INSERT INTO REPORTS (comittee_id,report_id,detail) VALUES (" + Session["CommitteeID"] + "," + reportID + ",'" + details +"')";
+            string q1 = "INSERT INTO REPORTS (comittee_id,report_id,detail) VALUES (" + Session["CommitteeID"] + "," + reportID + ",'" + details + "')";
 
             cmL = new SqlCommand(q1, conn);
-            
+
             if (details == "")
             {
                 conn.Close();
@@ -134,16 +134,16 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmL;
             string q2 = "select count(r.report_id) from reports r inner join FACULTY f on f.committee_id=r.comittee_id where f.email='" + Session["Email"] + "'";
             cmL = new SqlCommand(q2, conn);
-            
-            if (cmL.ExecuteScalar()==null)
+
+            if (cmL.ExecuteScalar() == null)
             {
                 Session["ReportCount"] = 0;
             }
             else
             {
-                Session["ReportCount"]= cmL.ExecuteScalar().ToString();
+                Session["ReportCount"] = cmL.ExecuteScalar().ToString();
             }
-            conn.Close ();
+            conn.Close();
         }
 
         protected void ClearDMLLog_Click(object sender, EventArgs e)
@@ -163,8 +163,8 @@ namespace FYP_Management_System_DB_Final_Project
             if (loadAllReports.Checked == false)
             {
                 string q = "select* from reports";
-                if(checkQueryIsNull(q)==false)
-                loadTable(q, 4);
+                if (checkQueryIsNull(q) == false)
+                    loadTable(q, 4);
             }
             else
             {
@@ -175,10 +175,10 @@ namespace FYP_Management_System_DB_Final_Project
         }
 
         protected void LoadDMLLog_Click(object sender, EventArgs e)
-        { 
-           string q = "select* from AuditLOG";
-           if (checkQueryIsNull(q) == false)
-               loadTable(q, 8);
+        {
+            string q = "select* from AuditLOG";
+            if (checkQueryIsNull(q) == false)
+                loadTable(q, 8);
         }
 
         protected void LoadDDLLog_Click(object sender, EventArgs e)
@@ -210,9 +210,9 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmL;
             string rID = getReportIDToEdit.Text;
             string details = getNewDetails.Text;
-            string q= "update REPORTS set detail = '"+ details +"' where report_id = '"+rID+"' and comittee_id = '"+Session["CommitteeID"] + "'";
+            string q = "update REPORTS set detail = '" + details + "' where report_id = '" + rID + "' and comittee_id = '" + Session["CommitteeID"] + "'";
             cmL = new SqlCommand(q, conn);
-            if(rID=="" || details == "")
+            if (rID == "" || details == "")
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Incorrect Data');", true);
                 return;
@@ -291,8 +291,8 @@ namespace FYP_Management_System_DB_Final_Project
             string q3 = "select faculty_id from supervisor where faculty_id=" + G_SID;
 
             cmL2 = new SqlCommand(q1, conn);
-            cmL3= new SqlCommand(q2, conn);
-            cmL4= new SqlCommand(q3, conn);
+            cmL3 = new SqlCommand(q2, conn);
+            cmL4 = new SqlCommand(q3, conn);
 
             if (G_PID == "" || G_SID == "" || G_CID == "")
             {
@@ -305,12 +305,14 @@ namespace FYP_Management_System_DB_Final_Project
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Panel ID');", true);
                 conn.Close();
                 return;
-            }else if (cmL3.ExecuteScalar() == null)
+            }
+            else if (cmL3.ExecuteScalar() == null)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Committee ID');", true);
                 conn.Close();
                 return;
-            }else if (cmL4.ExecuteScalar() == null)
+            }
+            else if (cmL4.ExecuteScalar() == null)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No such Supervisor ID');", true);
                 conn.Close();
@@ -320,7 +322,7 @@ namespace FYP_Management_System_DB_Final_Project
             string queryLogin = "INSERT INTO PROJECT_GROUP(group_name,panel_id, supervisor_id, committee_id) values ('" + GroupNameBox.Text.ToString() + "'," + GroupPanelIDBox.Text.ToString() + "," + GroupSuperID.Text.ToString() + "," + GroupCommitteeID.Text.ToString() + ");";
             cmL = new SqlCommand(queryLogin, conn);
             int affected = cmL.ExecuteNonQuery();
-            if (affected >0)
+            if (affected > 0)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Group Added');", true);
             }
@@ -463,17 +465,21 @@ namespace FYP_Management_System_DB_Final_Project
                             break;
                         case 6:
                             PlaceHolderSuprv.Controls.Add(new Literal { Text = html.ToString() });
-                            break ;
+                            break;
                         case 7:
                             PlaceHolderCommitee.Controls.Add(new Literal { Text = html.ToString() });
                             break;
                         case 8:
                             PlaceHolder6.Controls.Add(new Literal { Text = html.ToString() });
                             break;
+                        case 9:
+                            PlaceHolder7.Controls.Add(new Literal { Text = html.ToString() });
+                            break;
+
                         default:
                             break;
                     }
-                   // PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
+                    // PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
                     con.Close();
                 }
             }
@@ -527,6 +533,11 @@ namespace FYP_Management_System_DB_Final_Project
         protected void loadSupervisor_Click(object sender, EventArgs e)
         {
             loadTable("select s.faculty_id as SupervisorID,f.name,f.email,f.panel_id,f.committee_id from SUPERVISOR s inner join FACULTY f on s.faculty_id=f.id", 6);
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            loadTable("select group_id as GroupSentTo,details as Details from Notifications where committee_id=" + Session["CommitteeID"].ToString(), 9);
         }
         protected void addUserBtn(object sender, EventArgs e)
         {
@@ -787,7 +798,7 @@ namespace FYP_Management_System_DB_Final_Project
             SqlCommand cmS;
             int F_id = int.Parse(TB_setSuprv.Text);
 
-            string queryLogin = "insert SUPERVISOR (faculty_id) values('"+F_id+"')";
+            string queryLogin = "insert SUPERVISOR (faculty_id) values('" + F_id + "')";
             cmL = new SqlCommand(queryLogin, conn);
             SqlDataReader reader = cmL.ExecuteReader();
             if (reader != null)
@@ -814,6 +825,36 @@ namespace FYP_Management_System_DB_Final_Project
             }
             conn.Close();
         }
+        // Send notification BTN
+        protected void Button15_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString); //Connection String
+            conn.Open();
+            SqlCommand cmL;
+            SqlCommand cmS;
+            string G_id = TextBox6.Text.ToString();
+            string details = TextBox5.Text.ToString();
+            string queryLogin = "select * from PROJECT_GROUP where group_id="+G_id;
+            cmL = new SqlCommand(queryLogin, conn);
+            SqlDataReader reader = cmL.ExecuteReader();
+            if (reader != null)
+            {
+                if (reader.Read())
+                {
+                    cmL.Dispose();
+                    reader.Close();
+                    string querySign = "insert Notifications(group_id,committee_id,details) VALUES (" + G_id + "," + Session["CommitteeID"].ToString() + ",'" + details + "')";
+                    cmS = new SqlCommand(querySign, conn);
+                    cmS.ExecuteNonQuery();
+                    cmS.Dispose();
+                }
+                else 
+                {
+                    cmL.Dispose();
+                    conn.Close();
+                }
+            }
+        }
         protected void hideTbl_Click(object sender, EventArgs e)
         {
             PlaceHolder1.Controls.Clear();
@@ -834,6 +875,11 @@ namespace FYP_Management_System_DB_Final_Project
         {
             PlaceHolder5.Controls.Clear();
         }
+        protected void Button14_Click(object sender, EventArgs e)
+        {
+            PlaceHolder7.Controls.Clear();
+        }
+
 
     }
 }

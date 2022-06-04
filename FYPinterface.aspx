@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>FYP Interface</title>
     <link rel="stylesheet" href="Style.css" />
 </head>
 <body>
@@ -38,6 +38,31 @@
                         <h1>Role:</h1>
                         <asp:Label ID="role" runat="server" Text="role"></asp:Label>
                     </div>
+                    <p></p>
+                    <button type="button" class="collapsible">Manage Notifications</button>
+                    <div class="content">
+                        <p>
+                            Here you can send and see Notifications.
+                        </p>
+
+                        <asp:Button CssClass="button" ID="Button5" runat="server" Text="Load Noti." OnClick="Button5_Click" />
+                        <asp:Button CssClass="button spcBtn" ID="Button14" runat="server" Text="Hide Noti." OnClick="Button14_Click" />
+                        <asp:PlaceHolder ID="PlaceHolder7" runat="server"></asp:PlaceHolder>
+
+                        <button type="button" class="collapsible">Send to Group</button>
+                        <div align="center" class="content">
+                            <p>
+                                Group Id:
+                                <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                            </p>
+                            <p>Details</p>
+                            <asp:TextBox ID="TextBox5" runat="server" TextMode="MultiLine"></asp:TextBox>
+
+                            <asp:Button CssClass="button sucBtn" ID="Button15" runat="server" Text="Submit" OnClick="Button15_Click" />
+                        </div>
+
+                    </div>
+
                 </div>
                 <div style="margin: auto; float: right; width: 74%;">
                     <div style="border-style: double; border-width: 1px; padding: 10px;">
@@ -349,7 +374,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <p/>
+                                <p />
                                 <div align="center">
                                     <br />
                                     <button type="button" class="collapsible">

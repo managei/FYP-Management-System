@@ -62,7 +62,7 @@ namespace FYP_Management_System_DB_Final_Project
         }
         protected void LoadstudentNotify_Click(object sender, EventArgs e)
         {
-            string q = "select n.group_id from Notifications n inner join STUDENT s on n.group_id=s.group_id where email='" + Session["Email"] + "'";
+            string q = "select n.* from Notifications n inner join STUDENT s on n.group_id=s.group_id where email='" + Session["Email"] + "'";
             if (checkQueryIsNull(q))
                 loadTable(q, 1);
         }

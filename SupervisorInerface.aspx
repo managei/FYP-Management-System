@@ -37,6 +37,29 @@
                         <br />
                         <asp:Label ID="role" runat="server" Text="role"></asp:Label>
                     </div>
+                     <p></p>
+                    <button type="button" class="collapsible">Manage Notifications</button>
+                    <div class="content">
+                        <p>
+                            Here you can send and see Notifications.
+                        </p>
+
+                        <asp:Button CssClass="button" ID="Button5" runat="server" Text="Load Noti." OnClick="Button5_Click" />
+                        <asp:Button CssClass="button spcBtn" ID="Button14" runat="server" Text="Hide Noti." OnClick="Button14_Click" />
+                        <asp:PlaceHolder ID="PlaceHolder7" runat="server"></asp:PlaceHolder>
+
+                        <button type="button" class="collapsible">Send to Group</button>
+                        <div align="center" class="content">
+                            <p>
+                                Group Id:
+                                <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                            </p>
+                            <p>Details</p>
+                            <asp:TextBox ID="TextBox5" runat="server" TextMode="MultiLine"></asp:TextBox>
+                            <asp:Button CssClass="button sucBtn" ID="Button15" runat="server" Text="Submit" OnClick="Button15_Click" />
+                        </div>
+
+                    </div>
                 </div>
                 <div style="margin: auto; float: right; width: 74%;">
                     <div style="border-style: double; border-width: 1px; padding: 10px;">

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+    <title>Student Interface</title>
     <link rel="stylesheet" href="Style.css" />
 </head>
 <body>
