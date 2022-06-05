@@ -411,15 +411,6 @@
                             <asp:PlaceHolder runat="server" ID="PlaceHolder6"></asp:PlaceHolder>
 
                         </div>
-
-
-
-                        <p></p>
-                        <button type="button" class="collapsible">Manage SSRS Reports</button>
-                        <div class="content">
-                            <p>Here you can view and manage all Reports</p>
-                            <asp:Button CssClass="button sucBtn" ID="LoadReportPage" runat="server" />
-                        </div>
                     </div>
                 </div>
             </div>
